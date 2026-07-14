@@ -27,7 +27,7 @@
                             50: '#fdfbf7',
                             100: '#fcf7e8',
                             400: '#e5c060',
-                            500: '#D4AF37', /* Primary Gold matching the logo */
+                            500: '#D4AF37', /* Primary Gold */
                             600: '#bca02d',
                             700: '#967d22',
                         }
@@ -37,7 +37,6 @@
         }
     </script>
     <style>
-        /* Gold gradient and subtle glow effects */
         .gold-gradient {
             background: linear-gradient(135deg, #FFD700 0%, #D4AF37 50%, #AA7C11 100%);
         }
@@ -48,7 +47,6 @@
             -webkit-text-fill-color: transparent;
         }
 
-        /* Hero section animation */
         @keyframes float {
 
             0%,
@@ -64,6 +62,15 @@
         .animated-hero {
             animation: float 6s ease-in-out infinite;
         }
+
+        /* Hide Google Translate original top bar */
+        .skiptranslate {
+            display: none !important;
+        }
+
+        body {
+            top: 0px !important;
+        }
     </style>
 </head>
 
@@ -75,16 +82,8 @@
             <div class="flex items-center justify-between h-20">
                 <!-- Logo & Title -->
                 <div class="flex items-center space-x-3">
-                    <div
-                        class="w-12 h-12 rounded-full border-2 border-gold-500 flex items-center justify-center bg-black overflow-hidden shadow-lg shadow-gold-500/10">
-                        <!-- Simulated Gold Quran Logo SVG matching yours -->
-                        <svg class="w-8 h-8 text-gold-500" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-                            stroke-width="1.5">
-                            <path
-                                d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"
-                                stroke-linecap="round" stroke-linejoin="round" />
-                        </svg>
-                    </div>
+                    <img src="academy logo.png" alt="Online Quran Academy Logo"
+                        class="w-14 h-14 object-contain rounded-full border border-gold-500/30 bg-black">
                     <div>
                         <span
                             class="font-serif text-lg md:text-xl font-bold tracking-wider text-gold-gradient block">Online
@@ -96,40 +95,38 @@
 
                 <!-- Navigation Links (Desktop) -->
                 <nav class="hidden md:flex space-x-8 text-sm font-semibold tracking-wide">
-                    <a href="#home" class="hover:text-gold-500 transition-colors text-gold-500">Home</a>
-                    <a href="#about" class="hover:text-gold-500 transition-colors">About Us</a>
-                    <a href="#services" class="hover:text-gold-500 transition-colors">Services</a>
-                    <a href="#classes" class="hover:text-gold-500 transition-colors">Online Classes</a>
-                    <a href="#contact" class="hover:text-gold-500 transition-colors">Contact</a>
+                    <a href="index.html" class="hover:text-gold-500 transition-colors text-gold-500">Home</a>
+                    <a href="about.html" class="hover:text-gold-500 transition-colors">About Us</a>
+                    <a href="services.html" class="hover:text-gold-500 transition-colors">Services</a>
+                    <a href="contact.html" class="hover:text-gold-500 transition-colors">Contact</a>
                 </nav>
 
                 <!-- Phone & Language Dropdown -->
                 <div class="flex items-center space-x-4">
-                    <!-- Phone Link -->
                     <a href="tel:+923074277240"
                         class="hidden lg:flex items-center space-x-2 text-xs font-bold border border-gold-500/30 px-3 py-1.5 rounded-full bg-gold-500/5 hover:bg-gold-500/20 transition-all text-gold-400">
                         <i class="fa-solid fa-phone"></i>
                         <span>+92 307 4277240</span>
                     </a>
 
-                    <!-- Google Translator Widget Trigger / Selector -->
-                    <div class="relative inline-block text-left">
-                        <div id="google_translate_element" class="hidden"></div>
-                        <select onchange="translateLanguage(this.value)"
-                            class="bg-neutral-900 border border-gold-500/30 text-gold-400 text-xs rounded-lg block p-2 outline-none focus:border-gold-500 cursor-pointer">
-                            <option value="">🌐 Translate</option>
-                            <option value="ar">العربية (Arabic)</option>
-                            <option value="ur">اردو (Urdu)</option>
-                            <option value="en">English (UK/USA)</option>
-                            <option value="zh-CN">中文 (Chinese)</option>
-                            <option value="ko">한국어 (Korean)</option>
-                            <option value="ja">日本語 (Japanese)</option>
-                            <option value="es">Español (Spanish)</option>
-                            <option value="fa">فارسی (Persian)</option>
-                            <option value="hi">हिन्दी (Hindi)</option>
-                            <option value="bn">বাংলা (Bengali)</option>
-                        </select>
-                    </div>
+                    <!-- Hidden Google Translate Element Container -->
+                    <div id="google_translate_element" class="hidden"></div>
+
+                    <!-- Customized Language Dropdown -->
+                    <select id="langSelector" onchange="translateLanguage(this.value)"
+                        class="bg-neutral-900 border border-gold-500/30 text-gold-400 text-xs rounded-lg block p-2 outline-none focus:border-gold-500 cursor-pointer font-semibold">
+                        <option value="">🌐 Translate</option>
+                        <option value="ar">العربية (Arabic)</option>
+                        <option value="ur">اردو (Urdu)</option>
+                        <option value="en">English (UK/USA)</option>
+                        <option value="zh-CN">中文 (Chinese)</option>
+                        <option value="ko">한국어 (Korean)</option>
+                        <option value="ja">日本語 (Japanese)</option>
+                        <option value="es">Español (Spanish)</option>
+                        <option value="fa">فارسی (Persian)</option>
+                        <option value="hi">हिन्दी (Hindi)</option>
+                        <option value="bn">বাংলা (Bengali)</option>
+                    </select>
                 </div>
             </div>
         </div>
@@ -411,15 +408,8 @@
                 <!-- Col 1: Logo & Mission -->
                 <div class="space-y-4">
                     <div class="flex items-center space-x-3">
-                        <div
-                            class="w-10 h-10 rounded-full border border-gold-500 flex items-center justify-center bg-black">
-                            <svg class="w-6 h-6 text-gold-500" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-                                stroke-width="1.5">
-                                <path
-                                    d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"
-                                    stroke-linecap="round" stroke-linejoin="round" />
-                            </svg>
-                        </div>
+                        <img src="academy logo.png" alt="Online Quran Academy Logo"
+                            class="w-12 h-12 object-contain rounded-full border border-gold-500 bg-black">
                         <span class="font-serif text-lg font-bold tracking-wider text-gold-gradient block">Online Quran
                             Academy</span>
                     </div>
@@ -547,12 +537,17 @@
             }, 'google_translate_element');
         }
 
-        // Trigger Google Translate dynamically via dropdown
+        // Reliable click translator logic
         function translateLanguage(langCode) {
-            const selectEl = document.querySelector('.goog-te-combo');
-            if (selectEl) {
-                selectEl.value = langCode;
-                selectEl.dispatchEvent(new Event('change'));
+            if (!langCode) return;
+            const googleSelect = document.querySelector('.goog-te-combo');
+            if (googleSelect) {
+                googleSelect.value = langCode;
+                // Dispatch both change and click events to make sure Google API catches it
+                googleSelect.dispatchEvent(new Event('change', { bubbles: true }));
+            } else {
+                // If translate widget not loaded yet, retry in 500ms
+                setTimeout(() => translateLanguage(langCode), 500);
             }
         }
 
@@ -562,7 +557,7 @@
             chatBox.classList.toggle('hidden');
         }
 
-        // Simulated intelligent AI chat answers
+        // Intelligent Website-aware AI assistant reply matrix
         function sendMessage() {
             const input = document.getElementById('chatInput');
             const messagesArea = document.getElementById('chatMessages');
@@ -572,14 +567,14 @@
 
             // User Message bubble
             const userBubble = document.createElement('div');
-            userBubble.className = "bg-neutral-800 self-end p-2.5 rounded-lg max-w-[80%] text-white text-right";
+            userBubble.className = "bg-neutral-800 self-end p-2.5 rounded-lg max-w-[80%] text-white";
             userBubble.textContent = userText;
             messagesArea.appendChild(userBubble);
 
             input.value = '';
             messagesArea.scrollTop = messagesArea.scrollHeight;
 
-            // Simple Auto-Replying logic (Simulated AI)
+            // Simulated AI responses about the Academy specifically
             setTimeout(() => {
                 const botBubble = document.createElement('div');
                 botBubble.className = "bg-gold-500/10 border border-gold-500/20 self-start p-2.5 rounded-lg max-w-[80%] text-gray-300";
@@ -587,15 +582,24 @@
                 let response = "Jazakallah for reaching out! For instant trial setups or personalized schedule discussions, please press the WhatsApp icon on the bottom left of your screen to directly talk with our administrator.";
 
                 const query = userText.toLowerCase();
-                if (query.includes('fee') || query.includes('price') || query.includes('charges')) {
-                    response = "Our fee packages are very budget-friendly and custom designed based on the number of classes you take per week. Please message us on WhatsApp to receive the complete package list!";
-                } else if (query.includes('timing') || query.includes('schedule') || query.includes('when')) {
-                    response = "We operate 24/7! Classes can be customized according to any timeframe that is convenient for you or your kids.";
+
+                // Specific FAQ answering logic
+                if (query.includes('course') || query.includes('courses') || query.includes('offer') || query.includes('study') || query.includes('classes')) {
+                    response = "We offer the following premium Quranic courses:\n\n" +
+                        "1. Noorani Qaida (Arabic alphabets and reading foundation)\n" +
+                        "2. Tajweed-ul-Quran (Correct pronunciation rules)\n" +
+                        "3. Quran Hifz (Flexible Quran Memorization program)\n" +
+                        "4. Islamic Supplications (Daily Duas, Prayers/Salah rules, and Sunnah)\n\n" +
+                        "We offer 3 days of free trial classes. Please let me know which one you'd like to join!";
+                } else if (query.includes('fee') || query.includes('price') || query.includes('charges') || query.includes('cost')) {
+                    response = "Our fee packages are very budget-friendly and custom-designed based on the number of classes you take per week. Please contact us on WhatsApp (+92 307 4277240) to receive the exact fee plans according to your timezone.";
+                } else if (query.includes('timing') || query.includes('schedule') || query.includes('time') || query.includes('when')) {
+                    response = "We operate 24/7! Classes can be customized according to any timezone or timeframe that is convenient for you or your kids.";
                 } else if (query.includes('trial') || query.includes('free') || query.includes('apply')) {
-                    response = "You can register for a 3-day free trial right now by filling out the 'Apply for 3 Days Free Trial' form on top of our homepage, or contact us directly on WhatsApp!";
+                    response = "You can register for a 3-day free trial right now by filling out the 'Apply' form on top of our homepage, or message us directly on WhatsApp (+92 307 4277240) for fast scheduling.";
                 }
 
-                botBubble.textContent = response;
+                botBubble.innerHTML = response.replace(/\n/g, '<br>');
                 messagesArea.appendChild(botBubble);
                 messagesArea.scrollTop = messagesArea.scrollHeight;
             }, 800);
@@ -613,7 +617,6 @@
             const encodedText = encodeURIComponent(text);
             const whatsappURL = `https://wa.me/923074277240?text=${encodedText}`;
 
-            // Open WhatsApp link
             window.open(whatsappURL, '_blank');
         }
     </script>
