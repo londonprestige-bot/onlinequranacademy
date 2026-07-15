@@ -97,7 +97,7 @@
                     </a>
 
                     <!-- Hidden Google Translate Element Container -->
-                    <div id="google_translate_element" class="hidden"></div>
+                    <div id="google_translate_element" style="display: none;"></div>
 
                     <!-- Customized Language Dropdown -->
                     <select id="langSelector" onchange="translateLanguage(this.value)"
@@ -372,8 +372,9 @@
         </div>
     </div>
 
-    <!-- ================= JAVASCRIPT LOGIC ================= -->
-    <script>
+    <!-- ================= MULTI-FUNCTIONAL CORE SCRIPTS ================= -->
+    <script type="text/javascript">
+        // 1. Google Translate Initializer
         function googleTranslateElementInit() {
             new google.translate.TranslateElement({
                 pageLanguage: 'en',
@@ -383,6 +384,7 @@
             }, 'google_translate_element');
         }
 
+        // 2. Language Change Action (onchange trigger)
         function translateLanguage(langCode) {
             if (!langCode) return;
             const googleSelect = document.querySelector('.goog-te-combo');
@@ -394,6 +396,21 @@
             }
         }
 
+        // 3. Mobile Hamburger Menu Toggle
+        function toggleMobileMenu() {
+            const mobileMenu = document.getElementById('mobileMenu');
+            const menuIcon = document.getElementById('menuIcon');
+
+            mobileMenu.classList.toggle('hidden');
+
+            if (mobileMenu.classList.contains('hidden')) {
+                menuIcon.className = "fa-solid fa-bars";
+            } else {
+                menuIcon.className = "fa-solid fa-xmark";
+            }
+        }
+
+        // 4. AI Assistant Chat Box
         function toggleChat() {
             const chatBox = document.getElementById('aiChatBox');
             chatBox.classList.toggle('hidden');
@@ -443,8 +460,9 @@
         }
     </script>
 
+    <!-- Google Translate Script -->
     <script type="text/javascript"
-        src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
+        src="https://translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
 </body>
 
 </html>

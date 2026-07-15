@@ -111,7 +111,7 @@
                         <span>+92 307 4277240</span>
                     </a>
 
-                    <div id="google_translate_element" class="hidden"></div>
+                    <div id="google_translate_element" style="display: none;"></div>
                     <select id="langSelector" onchange="translateLanguage(this.value)"
                         class="bg-neutral-900 border border-gold-500/30 text-gold-400 text-xs rounded-lg block p-2 outline-none focus:border-gold-500 cursor-pointer font-semibold">
                         <option value="">🌐 Translate</option>
@@ -338,130 +338,9 @@
         </div>
     </div>
 
-    <!-- ================= JAVASCRIPT LOGIC ================= -->
-    <script>
-        // Setup dropdown list values on load
-        window.addEventListener('DOMContentLoaded', () => {
-            // Populate Juz dropdown (Para 1 to 30)
-            const juzSelect = document.getElementById('juzSelect');
-            for (let i = 1; i <= 30; i++) {
-                let opt = document.createElement('option');
-                opt.value = i;
-                opt.textContent = `Para ${i}`;
-                juzSelect.appendChild(opt);
-            }
-
-            // Populate Surah List from API
-            fetch('https://api.alquran.cloud/v1/surah')
-                .then(res => res.json())
-                .then(data => {
-                    const surahSelect = document.getElementById('surahSelect');
-                    data.data.forEach(surah => {
-                        let opt = document.createElement('option');
-                        opt.value = surah.number;
-                        opt.textContent = `${surah.number}. ${surah.englishName} (${surah.name})`;
-                        surahSelect.appendChild(opt);
-                    });
-                })
-                .catch(err => console.error("Error loading Surah metadata:", err));
-        });
-
-        // Load Juz function
-        function loadJuz(juzNum) {
-            if (!juzNum) return;
-            // Clear other selector
-            document.getElementById('surahSelect').value = "";
-
-            showLoading(true);
-
-            fetch(`https://api.alquran.cloud/v1/juz/${juzNum}/quran-uthmani`)
-                .then(res => res.json())
-                .then(data => {
-                    displayQuranData(`Para (Juz) ${juzNum}`, data.data.ayahs, false);
-                })
-                .catch(err => {
-                    alert("Failed to fetch Quran text. Please check your internet connection.");
-                    showLoading(false);
-                });
-        }
-
-        // Load Surah function
-        function loadSurah(surahNum) {
-            if (!surahNum) return;
-            // Clear other selector
-            document.getElementById('juzSelect').value = "";
-
-            showLoading(true);
-
-            fetch(`https://api.alquran.cloud/v1/surah/${surahNum}/quran-uthmani`)
-                .then(res => res.json())
-                .then(data => {
-                    // Show Bismillah only if it's not Fatiha (Surah 1) or Taubah (Surah 9)
-                    const showBismillah = (surahNum != 1 && surahNum != 9);
-                    displayQuranData(`${data.data.englishName} (${data.data.name})`, data.data.ayahs, showBismillah);
-                })
-                .catch(err => {
-                    alert("Failed to fetch Quran text. Please check your internet connection.");
-                    showLoading(false);
-                });
-        }
-
-        // Render data to screen
-        function displayQuranData(title, ayahs, showBis) {
-            const container = document.getElementById('versesContainer');
-            const bismillah = document.getElementById('bismillah');
-            const titleElem = document.getElementById('readerTitle');
-
-            titleElem.textContent = title;
-            container.innerHTML = "";
-
-            if (showBis) {
-                bismillah.classList.remove('hidden');
-            } else {
-                bismillah.classList.add('hidden');
-            }
-
-            ayahs.forEach(ayah => {
-                let text = ayah.text;
-                // If Bismillah is shown, remove the Bismillah prefix from first ayah of Surah if API returns it
-                if (showBis && ayah.numberInSurah === 1 && text.startsWith("بِسْمِ اللَّهِ الرَّحْمَٰنِ الرَّحِيمِ")) {
-                    text = text.replace("بِسْمِ اللَّهِ الرَّحْمَٰنِ الرَّحِيمِ", "").trim();
-                }
-
-                // Render ayah block
-                const ayahSpan = document.createElement('span');
-                ayahSpan.className = "inline-block mb-3";
-                // Adding verse number inside formatted gold marker
-                ayahSpan.innerHTML = `${text} <span class="text-gold-500 font-sans font-bold text-xs border border-gold-500/40 rounded-full px-2 py-0.5 mx-1 inline-block select-none">${ayah.numberInSurah}</span>`;
-                container.appendChild(ayahSpan);
-            });
-
-            showLoading(false);
-        }
-
-        // Helper: Toggle layouts
-        function showLoading(isLoading) {
-            const loading = document.getElementById('loading');
-            const displayBox = document.getElementById('quranDisplayBox');
-            const emptyState = document.getElementById('emptyState');
-
-            if (isLoading) {
-                loading.classList.remove('hidden');
-                displayBox.classList.add('hidden');
-                emptyState.classList.add('hidden');
-            } else {
-                loading.classList.add('hidden');
-                displayBox.classList.remove('hidden');
-            }
-        }
-
-        // Font size control
-        function adjustFontSize(val) {
-            const container = document.getElementById('versesContainer');
-            container.style.fontSize = val + 'px';
-        }
-
-        // Google Translate & Widgets Logics
+    <!-- ================= MULTI-FUNCTIONAL CORE SCRIPTS ================= -->
+    <script type="text/javascript">
+        // 1. Google Translate Initializer
         function googleTranslateElementInit() {
             new google.translate.TranslateElement({
                 pageLanguage: 'en',
@@ -471,6 +350,7 @@
             }, 'google_translate_element');
         }
 
+        // 2. Language Change Action (onchange trigger)
         function translateLanguage(langCode) {
             if (!langCode) return;
             const googleSelect = document.querySelector('.goog-te-combo');
@@ -482,6 +362,21 @@
             }
         }
 
+        // 3. Mobile Hamburger Menu Toggle
+        function toggleMobileMenu() {
+            const mobileMenu = document.getElementById('mobileMenu');
+            const menuIcon = document.getElementById('menuIcon');
+
+            mobileMenu.classList.toggle('hidden');
+
+            if (mobileMenu.classList.contains('hidden')) {
+                menuIcon.className = "fa-solid fa-bars";
+            } else {
+                menuIcon.className = "fa-solid fa-xmark";
+            }
+        }
+
+        // 4. AI Assistant Chat Box
         function toggleChat() {
             const chatBox = document.getElementById('aiChatBox');
             chatBox.classList.toggle('hidden');
@@ -531,8 +426,9 @@
         }
     </script>
 
+    <!-- Google Translate Script -->
     <script type="text/javascript"
-        src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
+        src="https://translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
 </body>
 
 </html>

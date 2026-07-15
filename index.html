@@ -114,7 +114,7 @@
                     </a>
 
                     <!-- Hidden Google Translate Element Container -->
-                    <div id="google_translate_element" class="hidden"></div>
+                    <div id="google_translate_element" style="display: none;"></div>
 
                     <!-- Customized Language Dropdown -->
                     <select id="langSelector" onchange="translateLanguage(this.value)"
@@ -229,9 +229,7 @@
                             </button>
                         </form>
                     </div>
-                    class="relative overflow-hidden py-16 md:py-24 border-b border-gold-500/10
-                    bg-[radial-gradient(ellipse_at_center,_var(--tw-gradient-stops))] from-neutral-900 via-neutral-950
-                    to-neutral-950">
+
                 </div>
 
             </div>
@@ -540,9 +538,9 @@
     </div>
 
 
-    <!-- ================= JAVASCRIPT LOGIC ================= -->
-    <script>
-        // Google Translate API Integration
+    <!-- ================= MULTI-FUNCTIONAL CORE SCRIPTS ================= -->
+    <script type="text/javascript">
+        // 1. Google Translate Initializer
         function googleTranslateElementInit() {
             new google.translate.TranslateElement({
                 pageLanguage: 'en',
@@ -552,27 +550,38 @@
             }, 'google_translate_element');
         }
 
-        // Reliable click translator logic
+        // 2. Language Change Action (onchange trigger)
         function translateLanguage(langCode) {
             if (!langCode) return;
             const googleSelect = document.querySelector('.goog-te-combo');
             if (googleSelect) {
                 googleSelect.value = langCode;
-                // Dispatch both change and click events to make sure Google API catches it
                 googleSelect.dispatchEvent(new Event('change', { bubbles: true }));
             } else {
-                // If translate widget not loaded yet, retry in 500ms
                 setTimeout(() => translateLanguage(langCode), 500);
             }
         }
 
-        // Floating AI Chat Widget Toggle
+        // 3. Mobile Hamburger Menu Toggle
+        function toggleMobileMenu() {
+            const mobileMenu = document.getElementById('mobileMenu');
+            const menuIcon = document.getElementById('menuIcon');
+
+            mobileMenu.classList.toggle('hidden');
+
+            if (mobileMenu.classList.contains('hidden')) {
+                menuIcon.className = "fa-solid fa-bars";
+            } else {
+                menuIcon.className = "fa-solid fa-xmark";
+            }
+        }
+
+        // 4. AI Assistant Chat Box
         function toggleChat() {
             const chatBox = document.getElementById('aiChatBox');
             chatBox.classList.toggle('hidden');
         }
 
-        // Intelligent Website-aware AI assistant reply matrix
         function sendMessage() {
             const input = document.getElementById('chatInput');
             const messagesArea = document.getElementById('chatMessages');
@@ -580,7 +589,6 @@
 
             if (!userText) return;
 
-            // User Message bubble
             const userBubble = document.createElement('div');
             userBubble.className = "bg-neutral-800 self-end p-2.5 rounded-lg max-w-[80%] text-white";
             userBubble.textContent = userText;
@@ -589,16 +597,13 @@
             input.value = '';
             messagesArea.scrollTop = messagesArea.scrollHeight;
 
-            // Simulated AI responses about the Academy specifically
             setTimeout(() => {
                 const botBubble = document.createElement('div');
                 botBubble.className = "bg-gold-500/10 border border-gold-500/20 self-start p-2.5 rounded-lg max-w-[80%] text-gray-300";
 
                 let response = "Jazakallah for reaching out! For instant trial setups or personalized schedule discussions, please press the WhatsApp icon on the bottom left of your screen to directly talk with our administrator.";
-
                 const query = userText.toLowerCase();
 
-                // Specific FAQ answering logic
                 if (query.includes('course') || query.includes('courses') || query.includes('offer') || query.includes('study') || query.includes('classes')) {
                     response = "We offer the following premium Quranic courses:\n\n" +
                         "1. Noorani Qaida (Arabic alphabets and reading foundation)\n" +
@@ -619,26 +624,11 @@
                 messagesArea.scrollTop = messagesArea.scrollHeight;
             }, 800);
         }
-
-        // Handle Apply Form submission -> Open WhatsApp prefilled with user's details
-        function handleApplyForm(event) {
-            event.preventDefault();
-            const name = document.getElementById('student_name').value;
-            const whatsapp = document.getElementById('student_whatsapp').value;
-            const course = document.getElementById('student_course').value;
-            const message = document.getElementById('student_message').value;
-
-            const text = `Assalam-o-Alaikum, I want to apply for a free trial.\n\n*Name:* ${name}\n*Phone:* ${whatsapp}\n*Course:* ${course}\n*Message:* ${message}`;
-            const encodedText = encodeURIComponent(text);
-            const whatsappURL = `https://wa.me/923074277240?text=${encodedText}`;
-
-            window.open(whatsappURL, '_blank');
-        }
     </script>
 
-    <!-- Google Translate Script Load -->
+    <!-- Google Translate Script -->
     <script type="text/javascript"
-        src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
+        src="https://translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
 </body>
 
 </html>
