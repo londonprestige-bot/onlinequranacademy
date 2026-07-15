@@ -138,7 +138,16 @@
 
     <!-- ================= HERO SECTION (WITH APPLY FORM) ================= -->
     <section id="home"
-        class="relative overflow-hidden py-16 md:py-24 border-b border-gold-500/10 bg-[radial-gradient(ellipse_at_center,_var(--tw-gradient-stops))] from-neutral-900 via-neutral-950 to-neutral-950">
+        class="relative min-h-[90vh] flex items-center justify-center overflow-hidden py-20 px-4 sm:px-6 lg:px-8"
+        style="background-image: linear-gradient(to bottom, rgba(10, 10, 10, 0.92), rgba(10, 10, 10, 0.85), rgba(10, 10, 10, 0.95)), url('them 1.jpg'); background-size: cover; background-position: center; background-repeat: no-repeat;">
+
+        <!-- Agar aap background mein overlapping double theme layers chahte hain ya grid effect: -->
+        <div class="absolute inset-0 opacity-15 mix-blend-overlay pointer-events-none"
+            style="background-image: url('them 2.jpg'); background-size: cover; background-position: center;">
+        </div>
+        class="relative overflow-hidden py-16 md:py-24 border-b border-gold-500/10
+        bg-[radial-gradient(ellipse_at_center,_var(--tw-gradient-stops))] from-neutral-900 via-neutral-950
+        to-neutral-950">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
             <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
 
