@@ -121,18 +121,44 @@
     </header>
 
     <!-- ================= HERO SECTION ================= -->
-    <section
-        class="py-16 bg-[radial-gradient(ellipse_at_center,_var(--tw-gradient-stops))] from-neutral-900 to-neutral-950 text-center border-b border-gold-500/10">
-        <div class="max-w-4xl mx-auto px-4">
-            <span
-                class="inline-block px-3 py-1 rounded-full border border-gold-500/20 bg-gold-500/5 text-gold-400 text-[10px] font-semibold tracking-widest uppercase mb-3">
-                Explore Our Courses
-            </span>
-            <h1 class="text-4xl md:text-5xl font-serif font-bold text-gold-gradient mb-4">Our Islamic Services</h1>
-            <p class="text-gray-400 text-sm md:text-base max-w-2xl mx-auto leading-relaxed">
+    <!-- ================= SERVICES HERO SECTION WITH BG IMAGE ================= -->
+    <section class="relative py-24 md:py-32 flex items-center justify-center overflow-hidden bg-neutral-950">
+
+        <!-- Background Image Container with Overlay -->
+        <div class="absolute inset-0 z-0">
+            <!-- Background Image -->
+            <img src="services page them.jpg" alt="Quran Background"
+                class="w-full h-full object-cover object-center opacity-40">
+            <!-- Dark Gradients to blend with dark page theme and ensure text readability -->
+            <div class="absolute inset-0 bg-gradient-to-b from-neutral-950/80 via-neutral-950/70 to-neutral-950"></div>
+            <div class="absolute inset-0 bg-radial-gradient from-transparent to-neutral-950/90"></div>
+        </div>
+
+        <!-- Content Area (Z-Index ensures it stays on top of background) -->
+        <div class="relative z-10 max-w-4xl mx-auto px-4 text-center">
+
+            <!-- Explore Badge -->
+            <div class="inline-block mb-4">
+                <span
+                    class="border border-gold-500/30 bg-gold-500/10 text-gold-400 text-xs font-semibold tracking-widest uppercase px-4 py-1.5 rounded-full">
+                    Explore Our Courses
+                </span>
+            </div>
+
+            <!-- Main Title -->
+            <h1 class="font-serif text-4xl md:text-6xl font-bold text-white tracking-wide leading-tight drop-shadow-md">
+                Our <span class="text-gold-500">Islamic</span> Services
+            </h1>
+
+            <!-- Small Gold Divider Line -->
+            <div class="w-20 h-1 bg-gold-500 mx-auto my-6 rounded-full"></div>
+
+            <!-- Description Text -->
+            <p class="text-gray-300 text-base md:text-lg leading-relaxed max-w-2xl mx-auto drop-shadow">
                 Choose from our structured learning pathways. Whether you are a beginner starting from scratch or
                 looking to refine your Tajweed, we have custom classes for you.
             </p>
+
         </div>
     </section>
 
