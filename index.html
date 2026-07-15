@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="en" class="scroll-smooth">
 
 <head>
@@ -627,8 +627,88 @@
     </script>
 
     <!-- Google Translate Script -->
-    <script type="text/javascript"
-        src="https://translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
+    
+    <!-- ================= MULTI-FUNCTIONAL CORE SCRIPTS ================= -->
+    <script type='text/javascript'>
+        function googleTranslateElementInit() {
+            new google.translate.TranslateElement({
+                pageLanguage: 'en',
+                includedLanguages: 'ar,ur,en,zh-CN,ko,ja,es,fa,hi,bn',
+                layout: google.translate.TranslateElement.InlineLayout.SIMPLE,
+                autoDisplay: false
+            }, 'google_translate_element');
+        }
+
+        function translateLanguage(langCode) {
+            if (!langCode) return;
+            const googleSelect = document.querySelector('.goog-te-combo');
+            if (googleSelect) {
+                googleSelect.value = langCode;
+                googleSelect.dispatchEvent(new Event('change', { bubbles: true }));
+            } else {
+                setTimeout(() => translateLanguage(langCode), 500);
+            }
+        }
+
+        function toggleMobileMenu() {
+            const mobileMenu = document.getElementById('mobileMenu');
+            const menuIcon = document.getElementById('menuIcon');
+            if (mobileMenu) {
+                mobileMenu.classList.toggle('hidden');
+                if (menuIcon) {
+                    if (mobileMenu.classList.contains('hidden')) {
+                        menuIcon.className = 'fa-solid fa-bars';
+                    } else {
+                        menuIcon.className = 'fa-solid fa-xmark';
+                    }
+                }
+            }
+        }
+
+        function toggleChat() {
+            const chatBox = document.getElementById('aiChatBox');
+            if (chatBox) chatBox.classList.toggle('hidden');
+        }
+
+        function sendMessage() {
+            const input = document.getElementById('chatInput');
+            const messagesArea = document.getElementById('chatMessages');
+            if (!input || !messagesArea) return;
+            const userText = input.value.trim();
+            if (!userText) return;
+
+            const userBubble = document.createElement('div');
+            userBubble.className = 'bg-neutral-800 self-end p-2.5 rounded-lg max-w-[80%] text-white';
+            userBubble.textContent = userText;
+            messagesArea.appendChild(userBubble);
+
+            input.value = '';
+            messagesArea.scrollTop = messagesArea.scrollHeight;
+
+            setTimeout(() => {
+                const botBubble = document.createElement('div');
+                botBubble.className = 'bg-gold-500/10 border border-gold-500/20 self-start p-2.5 rounded-lg max-w-[80%] text-gray-300';
+                
+                let response = 'Jazakallah for reaching out! For instant trial setups or personalized schedule discussions, please press the WhatsApp icon on the bottom left of your screen to directly talk with our administrator.';
+                const query = userText.toLowerCase();
+                
+                if (query.includes('course') || query.includes('courses') || query.includes('offer') || query.includes('study') || query.includes('classes')) {
+                    response = 'We offer the following premium Quranic courses:\n\n1. Noorani Qaida (Arabic alphabets and reading foundation)\n2. Tajweed-ul-Quran (Correct pronunciation rules)\n3. Quran Hifz (Flexible Quran Memorization program)\n4. Islamic Supplications (Daily Duas, Prayers/Salah rules, and Sunnah)\n\nWe offer 3 days of free trial classes. Please let me know which one you\'d like to join!';
+                } else if (query.includes('fee') || query.includes('price') || query.includes('charges') || query.includes('cost')) {
+                    response = 'Our fee packages are very budget-friendly and custom-designed based on the number of classes you take per week. Please contact us on WhatsApp (+92 307 4277240) to receive the exact fee plans according to your timezone.';
+                } else if (query.includes('timing') || query.includes('schedule') || query.includes('time') || query.includes('when')) {
+                    response = 'We operate 24/7! Classes can be customized according to any timezone or timeframe that is convenient for you or your kids.';
+                } else if (query.includes('trial') || query.includes('free') || query.includes('apply')) {
+                    response = 'You can register for a 3-day free trial right now by filling out the \'Apply\' form on top of our homepage, or message us directly on WhatsApp (+92 307 4277240) for fast scheduling.';
+                }
+
+                botBubble.innerHTML = response.replace(/\n/g, '<br>');
+                messagesArea.appendChild(botBubble);
+                messagesArea.scrollTop = messagesArea.scrollHeight;
+            }, 800);
+        }
+    </script>
+    <script type='text/javascript' src='https://translate.google.com/translate_a/element.js?cb=googleTranslateElementInit'></script>
 </body>
 
 </html>
