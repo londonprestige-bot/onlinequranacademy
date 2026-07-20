@@ -45,6 +45,9 @@
         .text-gold-gradient {
             background: linear-gradient(135deg, #FFD700 0%, #D4AF37 100%);
             -webkit-background-clip: text;
+            /* Vendor prefix (Chrome/Safari) */
+            background-clip: text;
+            /* <-- Yeh standard line add karein (Warning khatam ho jayegi) */
             -webkit-text-fill-color: transparent;
         }
 
