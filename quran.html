@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="en" class="scroll-smooth">
 
 <head>
@@ -197,7 +197,7 @@
 
                 <!-- Bismillah Al-Rahman Al-Rahim (Optional Display) -->
                 <div id="bismillah" class="text-3xl text-gold-500 font-quran mb-8 hidden">
-                    بِسْمِ اللَّهِ الرَّحْمَٰنِ الرَّحِيمِ
+                    Ø¨ÙØ³Ù’Ù…Ù Ø§Ù„Ù„Ù‘ÙŽÙ‡Ù Ø§Ù„Ø±Ù‘ÙŽØ­Ù’Ù…ÙŽÙ°Ù†Ù Ø§Ù„Ø±Ù‘ÙŽØ­ÙÙŠÙ…Ù
                 </div>
 
                 <!-- Verses Area -->
@@ -253,7 +253,7 @@
                         Lahore, Punjab, Pakistan (Active internationally across UK, US, Arab states and beyond)
                     </p>
                     <p class="text-xs text-gold-500 font-bold">
-                        📞 <a href="tel:+923074277240" class="hover:underline">+92 307 4277240</a>
+                        ðŸ“ž <a href="tel:+923074277240" class="hover:underline">+92 307 4277240</a>
                     </p>
                 </div>
             </div>
@@ -411,8 +411,8 @@
             ayahs.forEach(ayah => {
                 let text = ayah.text;
                 // If Bismillah is shown, remove the Bismillah prefix from first ayah of Surah if API returns it
-                if (showBis && ayah.numberInSurah === 1 && text.startsWith("بِسْمِ اللَّهِ الرَّحْمَٰنِ الرَّحِيمِ")) {
-                    text = text.replace("بِسْمِ اللَّهِ الرَّحْمَٰنِ الرَّحِيمِ", "").trim();
+                if (showBis && ayah.numberInSurah === 1 && text.startsWith("Ø¨ÙØ³Ù’Ù…Ù Ø§Ù„Ù„Ù‘ÙŽÙ‡Ù Ø§Ù„Ø±Ù‘ÙŽØ­Ù’Ù…ÙŽÙ°Ù†Ù Ø§Ù„Ø±Ù‘ÙŽØ­ÙÙŠÙ…Ù")) {
+                    text = text.replace("Ø¨ÙØ³Ù’Ù…Ù Ø§Ù„Ù„Ù‘ÙŽÙ‡Ù Ø§Ù„Ø±Ù‘ÙŽØ­Ù’Ù…ÙŽÙ°Ù†Ù Ø§Ù„Ø±Ù‘ÙŽØ­ÙÙŠÙ…Ù", "").trim();
                 }
 
                 // Render ayah block
@@ -519,7 +519,31 @@
     </script>
 
     
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const menuBtn = document.getElementById('mobileMenuBtn');
+            const dropdownMenu = document.getElementById('mobileDropdownMenu');
+            const hamburgerIcon = document.getElementById('hamburgerIcon');
+            const closeIcon = document.getElementById('closeIcon');
+            if (menuBtn && dropdownMenu) {
+                menuBtn.addEventListener('click', (e) => {
+                    e.stopPropagation();
+                    dropdownMenu.classList.toggle('hidden');
+                    hamburgerIcon.classList.toggle('hidden');
+                    closeIcon.classList.toggle('hidden');
+                });
+                document.addEventListener('click', () => {
+                    if (!dropdownMenu.classList.contains('hidden')) {
+                        dropdownMenu.classList.add('hidden');
+                        hamburgerIcon.classList.remove('hidden');
+                        closeIcon.classList.add('hidden');
+                    }
+                });
+            }
+        });
+    </script>
 </body>
 
 </html>
+
 

@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="en" class="scroll-smooth">
 
 <head>
@@ -475,11 +475,11 @@
 
             // Format message for WhatsApp
             const waText = `Assalamu Alaikum,\n\nI want to register for a 3-Day Free Trial class at Online Quran Academy.\n\n` +
-                `👤 *Name:* ${name}\n` +
-                `📞 *WhatsApp:* ${phone}\n` +
-                `📚 *Course:* ${course}\n` +
-                `🌍 *Country/Timezone:* ${timezone}\n` +
-                `📝 *Message:* ${message}`;
+                `ðŸ‘¤ *Name:* ${name}\n` +
+                `ðŸ“ž *WhatsApp:* ${phone}\n` +
+                `ðŸ“š *Course:* ${course}\n` +
+                `ðŸŒ *Country/Timezone:* ${timezone}\n` +
+                `ðŸ“ *Message:* ${message}`;
 
             const encodedText = encodeURIComponent(waText);
 
@@ -522,7 +522,7 @@
                         Lahore, Punjab, Pakistan (Active internationally across UK, US, Arab states and beyond)
                     </p>
                     <p class="text-xs text-gold-500 font-bold">
-                        📞 <a href="tel:+923074277240" class="hover:underline">+92 307 4277240</a>
+                        ðŸ“ž <a href="tel:+923074277240" class="hover:underline">+92 307 4277240</a>
                     </p>
                 </div>
             </div>
@@ -682,9 +682,33 @@
     </script>
     <script type='text/javascript'
         src='https://translate.google.com/translate_a/element.js?cb=googleTranslateElementInit'></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const menuBtn = document.getElementById('mobileMenuBtn');
+            const dropdownMenu = document.getElementById('mobileDropdownMenu');
+            const hamburgerIcon = document.getElementById('hamburgerIcon');
+            const closeIcon = document.getElementById('closeIcon');
+            if (menuBtn && dropdownMenu) {
+                menuBtn.addEventListener('click', (e) => {
+                    e.stopPropagation();
+                    dropdownMenu.classList.toggle('hidden');
+                    hamburgerIcon.classList.toggle('hidden');
+                    closeIcon.classList.toggle('hidden');
+                });
+                document.addEventListener('click', () => {
+                    if (!dropdownMenu.classList.contains('hidden')) {
+                        dropdownMenu.classList.add('hidden');
+                        hamburgerIcon.classList.remove('hidden');
+                        closeIcon.classList.add('hidden');
+                    }
+                });
+            }
+        });
+    </script>
 </body>
 
 </html>
+
 
 
 
