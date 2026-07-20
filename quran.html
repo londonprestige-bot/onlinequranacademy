@@ -1,36 +1,23 @@
 <!DOCTYPE html>
-<html lang="en" class="scroll-smooth">
+<html lang="en">
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Read Holy Quran - Online Quran Academy</title>
-    <!-- Tailwind CSS CDN -->
+    <title>Read Quran - Online Quran Academy</title>
+    <!-- Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
     <!-- FontAwesome for Icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <!-- Google Fonts (Added Amiri for beautiful Quranic Arabic) -->
-    <link
-        href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;700&family=Poppins:wght@300;400;600;700&family=Amiri:wght@400;700&display=swap"
-        rel="stylesheet">
-
     <script>
         tailwind.config = {
             theme: {
                 extend: {
-                    fontFamily: {
-                        sans: ['Poppins', 'sans-serif'],
-                        serif: ['Cinzel', 'serif'],
-                        quran: ['Amiri', 'serif'],
-                    },
                     colors: {
                         gold: {
-                            50: '#fdfbf7',
-                            100: '#fcf7e8',
-                            400: '#e5c060',
-                            500: '#D4AF37',
-                            600: '#bca02d',
-                            700: '#967d22',
+                            400: '#f6d365',
+                            500: '#d4af37',
+                            600: '#aa8c2c',
                         }
                     }
                 }
@@ -38,123 +25,123 @@
         }
     </script>
     <style>
-        .gold-gradient {
-            background: linear-gradient(135deg, #FFD700 0%, #D4AF37 50%, #AA7C11 100%);
+        @import url('https://fonts.googleapis.com/css2?family=Amiri&family=Inter:wght@400;500;600;700&display=swap');
+
+        .font-serif {
+            font-family: 'Inter', serif;
         }
 
-        .text-gold-gradient {
-            background: linear-gradient(135deg, #FFD700 0%, #D4AF37 100%);
-            -webkit-background-clip: text;
-            /* Vendor prefix (Chrome/Safari) */
-            background-clip: text;
-            /* <-- Yeh standard line add karein (Warning khatam ho jayegi) */
-            -webkit-text-fill-color: transparent;
-        }
-
-        .skiptranslate {
-            display: none !important;
-        }
-
-        body {
-            top: 0px !important;
-        }
-
-        /* Custom scrollbar for Quran Reader */
-        .quran-scroll::-webkit-scrollbar {
-            width: 6px;
-        }
-
-        .quran-scroll::-webkit-scrollbar-track {
-            background: #0a0a0a;
-        }
-
-        .quran-scroll::-webkit-scrollbar-thumb {
-            background: #D4AF37;
-            border-radius: 10px;
+        .font-quran {
+            font-family: 'Amiri', serif;
         }
     </style>
 </head>
 
-<body class="bg-neutral-950 text-gray-100 font-sans selection:bg-gold-500 selection:text-black">
+<body class="bg-neutral-950 text-gray-100 min-h-screen flex flex-col justify-between">
 
-    <!-- ================= HEADER SECTION ================= -->
-    <header class="sticky top-0 z-40 bg-neutral-950/90 backdrop-blur-md border-b border-gold-500/20">
+    <!-- ================= HEADER / NAVBAR (FULLY RESPONSIVE) ================= -->
+    <header class="bg-neutral-950/90 backdrop-blur-md border-b border-gold-500/10 sticky top-0 z-50">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="flex items-center justify-between h-20">
-                <!-- Logo & Title -->
-                <div class="flex items-center space-x-3">
-                    <img src="academy logo.png" alt="Online Quran Academy Logo"
-                        class="w-14 h-14 object-contain rounded-full border border-gold-500/30 bg-black">
-                    <div>
-                        <span
-                            class="font-serif text-lg md:text-xl font-bold tracking-wider text-gold-gradient block">Online
-                            Quran Academy</span>
-                        <span class="text-[9px] uppercase tracking-widest text-gray-400 block -mt-1">A Project of Al
-                            Quran International</span>
-                    </div>
+
+                <!-- Logo Section -->
+                <div class="flex items-center">
+                    <a href="index.html" class="flex items-center space-x-3">
+                        <div
+                            class="w-12 h-12 rounded-full border border-gold-500/30 flex items-center justify-center bg-neutral-900">
+                            <span class="text-gold-500 font-bold text-xs">OQA</span>
+                        </div>
+                        <div>
+                            <span
+                                class="block font-serif text-gold-400 font-bold text-sm tracking-widest uppercase">Online
+                                Quran Academy</span>
+                            <span class="block text-gray-500 text-[10px] uppercase tracking-wider">A Project of Al Quran
+                                International</span>
+                        </div>
+                    </a>
                 </div>
 
-                <!-- Navigation Links -->
-                <nav class="hidden md:flex space-x-6 text-sm font-semibold tracking-wide">
-                    <a href="index.html" class="hover:text-gold-500 transition-colors">Home</a>
-                    <a href="about.html" class="hover:text-gold-500 transition-colors">About Us</a>
-                    <a href="services.html" class="hover:text-gold-500 transition-colors">Services</a>
-                    <a href="quran.html" class="text-gold-500 font-bold transition-colors">Read Quran</a>
-                    <a href="contact.html" class="hover:text-gold-500 transition-colors">Contact</a>
+                <!-- Desktop Navigation Links (Hidden on Mobile, Visible on Desktop) -->
+                <nav class="hidden lg:flex items-center space-x-8">
+                    <a href="index.html"
+                        class="text-gray-300 hover:text-gold-400 text-sm font-semibold tracking-wide transition-colors">Home</a>
+                    <a href="about.html"
+                        class="text-gray-300 hover:text-gold-400 text-sm font-semibold tracking-wide transition-colors">About
+                        Us</a>
+                    <a href="services.html"
+                        class="text-gray-300 hover:text-gold-400 text-sm font-semibold tracking-wide transition-colors">Services</a>
+                    <a href="quran.html"
+                        class="text-gold-400 text-sm font-semibold tracking-wide transition-colors">Read Quran</a>
+                    <a href="contact.html"
+                        class="text-gray-300 hover:text-gold-400 text-sm font-semibold tracking-wide transition-colors">Contact</a>
                 </nav>
 
-                <!-- Phone & Language Dropdown -->
+                <!-- WhatsApp & Mobile Burger Button -->
                 <div class="flex items-center space-x-4">
-                    <a href="tel:+923074277240"
-                        class="hidden lg:flex items-center space-x-2 text-xs font-bold border border-gold-500/30 px-3 py-1.5 rounded-full bg-gold-500/5 hover:bg-gold-500/20 transition-all text-gold-400">
+                    <a href="https://wa.me/923074277240" target="_blank"
+                        class="hidden sm:flex items-center space-x-2 bg-transparent hover:bg-gold-500/10 border border-gold-500/30 hover:border-gold-500 text-gold-400 px-4 py-2 rounded-full text-xs font-bold transition-all">
                         <i class="fa-solid fa-phone"></i>
                         <span>+92 307 4277240</span>
                     </a>
 
+                    <!-- BURGER MENU BUTTON (Visible only on Mobile/Tablet) -->
+                    <button id="mobileMenuBtn" type="button"
+                        class="lg:hidden text-gold-400 hover:text-gold-500 p-2 focus:outline-none"
+                        aria-label="Toggle Menu">
+                        <!-- Three Hamburger Lines -->
+                        <svg id="hamburgerIcon" class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="M4 6h16M4 12h16M4 18h16"></path>
+                        </svg>
+                        <!-- Close X Icon -->
+                        <svg id="closeIcon" class="w-8 h-8 hidden" fill="none" stroke="currentColor"
+                            viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="M6 18L18 6M6 6l12 12"></path>
+                        </svg>
+                    </button>
+                </div>
+            </div>
+        </div>
 
+        <!-- MOBILE DROPDOWN MENU PANEL (Opens smoothly below header) -->
+        <div id="mobileDropdownMenu"
+            class="hidden lg:hidden bg-neutral-950 border-t border-gold-500/10 w-full absolute left-0 top-20 z-50 shadow-2xl">
+            <div class="px-6 py-6 space-y-4 flex flex-col">
+                <a href="index.html"
+                    class="text-gray-300 hover:text-gold-400 text-lg font-semibold py-1 transition-colors">Home</a>
+                <a href="about.html"
+                    class="text-gray-300 hover:text-gold-400 text-lg font-semibold py-1 transition-colors">About Us</a>
+                <a href="services.html"
+                    class="text-gray-300 hover:text-gold-400 text-lg font-semibold py-1 transition-colors">Services</a>
+                <a href="quran.html" class="text-gold-400 text-lg font-semibold py-1 transition-colors">Read Quran</a>
+                <a href="contact.html"
+                    class="text-gray-300 hover:text-gold-400 text-lg font-semibold py-1 transition-colors">Contact</a>
 
+                <div class="pt-4 border-t border-neutral-900 sm:hidden">
+                    <a href="https://wa.me/923074277240" target="_blank"
+                        class="flex items-center justify-center space-x-2 bg-gold-500 text-neutral-950 font-bold py-3 rounded-xl text-sm">
+                        <i class="fa-solid fa-phone"></i>
+                        <span>Contact WhatsApp</span>
+                    </a>
                 </div>
             </div>
         </div>
     </header>
 
-    <!-- ================= HERO SECTION ================= -->
-    <!-- ================= HERO SECTION ================= -->
-    <!-- Humne yahan background image lagayi hai aur linear-gradient overlay de kar ise halka/dim kiya hai -->
-    <section class="relative py-20 overflow-hidden text-center border-b border-gold-500/10"
-        style="background-image: linear-gradient(to bottom, rgba(10, 10, 10, 0.94), rgba(10, 10, 10, 0.88), rgba(10, 10, 10, 0.96)), url('read quran them.jpg'); background-size: cover; background-position: center; background-repeat: no-repeat;">
+    <!-- ================= MAIN CONTROLS ================= -->
+    <main class="flex-grow max-w-7xl w-full mx-auto px-4 sm:px-6 lg:px-8 py-8">
+        <div class="bg-neutral-900/60 border border-gold-500/10 p-4 md:p-8 rounded-3xl shadow-2xl backdrop-blur-sm">
 
-        <!-- Subtle Grid Pattern Overlay (Optional but looks very premium) -->
-        <div
-            class="absolute inset-0 bg-[linear-gradient(rgba(212,175,55,0.03)_1px,transparent_1px),linear-gradient(90deg,rgba(212,175,55,0.03)_1px,transparent_1px)] bg-[size:30px_30px] pointer-events-none">
-        </div>
-
-        <div class="relative z-10 max-w-4xl mx-auto px-4">
-            <span
-                class="inline-block px-4 py-1.5 rounded-full border border-gold-500/30 bg-gold-500/10 text-gold-400 text-[10px] font-bold tracking-widest uppercase mb-4 animate-pulse">
-                Interactive Quran Reader
-            </span>
-            <h1 class="text-4xl md:text-5xl font-serif font-bold text-gold-gradient mb-3">Read The Holy Quran</h1>
-            <p class="text-gray-300 text-xs md:text-sm max-w-xl mx-auto leading-relaxed font-light">
-                Select your desired Para (Juz) or Surah below to start reading with clear Arabic scripts. Adjust the
-                font size according to your comfort.
-            </p>
-        </div>
-    </section>
-
-    <!-- ================= READER INTERFACE ================= -->
-    <main class="flex-grow max-w-7xl w-full mx-auto px-4 sm:px-6 lg:px-8 py-10">
-        <div class="bg-neutral-900/60 border border-gold-500/10 p-6 md:p-8 rounded-3xl shadow-2xl backdrop-blur-sm">
-
-            <!-- Selector Row -->
+            <!-- Grid Layout (Responsive: Stacked on mobile, 3 columns on desktop) -->
             <div class="grid grid-cols-1 md:grid-cols-3 gap-6 items-center border-b border-neutral-800 pb-6 mb-8">
                 <!-- Para Selector -->
                 <div>
                     <label class="block text-xs font-semibold text-gray-400 uppercase tracking-wider mb-2">Choose Para
                         (Juz):</label>
-                    <select id="paraSelect" onchange="loadParaContent()"
+                    <select id="paraSelect"
                         class="w-full bg-neutral-950 border border-neutral-800 focus:border-gold-500 text-gray-200 rounded-xl px-4 py-3 text-sm outline-none transition-all">
-                        <option value="" selected>-- Select Para --</option>
+                        <option value="">-- Select Para --</option>
                     </select>
                 </div>
 
@@ -162,9 +149,9 @@
                 <div>
                     <label class="block text-xs font-semibold text-gray-400 uppercase tracking-wider mb-2">Choose
                         Surah:</label>
-                    <select id="surahSelect" onchange="loadSurahContent()"
+                    <select id="surahSelect"
                         class="w-full bg-neutral-950 border border-neutral-800 focus:border-gold-500 text-gray-200 rounded-xl px-4 py-3 text-sm outline-none transition-all">
-                        <option value="" selected>-- Select Surah --</option>
+                        <option value="">-- Select Surah --</option>
                     </select>
                 </div>
 
@@ -175,7 +162,6 @@
                     <div class="flex items-center space-x-4">
                         <span class="text-xs text-gray-500">A</span>
                         <input type="range" id="fontSizeSlider" min="20" max="50" value="30"
-                            oninput="adjustFontSize(this.value)"
                             class="w-full accent-gold-500 cursor-pointer bg-neutral-800 h-1 rounded-lg appearance-none">
                         <span class="text-lg font-bold text-gold-400">A</span>
                     </div>
@@ -184,8 +170,8 @@
 
             <!-- Content Rendering Window -->
             <div id="quranDisplayWindow"
-                class="min-h-[400px] flex flex-col items-center justify-center text-center p-6 transition-all duration-300">
-                <!-- Initial State Placeholder Container -->
+                class="min-h-[400px] flex flex-col items-center justify-center text-center p-4 transition-all duration-300">
+                <!-- Initial Placeholder -->
                 <div id="placeholderState" class="space-y-4">
                     <div class="text-gold-500 text-6xl opacity-40 mb-2">
                         <i class="fa-solid fa-book-quran"></i>
@@ -196,214 +182,131 @@
                         dropdown controls above to start reading.</p>
                 </div>
 
-                <!-- Dynamic Reading Content Container (Hidden Initially) -->
-                <div id="readingState" class="hidden w-full text-right dir-rtl space-y-6">
+                <!-- Dynamic Reading Content Container -->
+                <div id="readingState" class="hidden w-full text-right space-y-6">
                     <h2 id="contentHeader"
-                        class="text-center font-serif text-2xl font-bold text-gold-400 mb-6 border-b border-neutral-800 pb-4">
+                        class="text-center font-serif text-xl md:text-2xl font-bold text-gold-400 mb-6 border-b border-neutral-800 pb-4">
                     </h2>
                     <p id="quranTextContent"
-                        class="font-quran leading-loose text-gray-100 tracking-wide select-none p-4 md:p-8 whitespace-normal text-justify"
+                        class="font-quran leading-loose text-gray-100 tracking-wide select-none p-2 md:p-8 whitespace-normal text-justify"
                         style="font-size: 30px; direction: rtl;"></p>
                 </div>
             </div>
 
         </div>
     </main>
+
     <!-- ================= FOOTER ================= -->
-    <footer class="bg-neutral-950 py-12 border-t border-gold-500/20">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-8 mb-8">
-                <div class="space-y-4">
-                    <div class="flex items-center space-x-3">
-                        <img src="academy logo.png" alt="Online Quran Academy Logo"
-                            class="w-12 h-12 object-contain rounded-full border border-gold-500 bg-black">
-                        <span class="font-serif text-lg font-bold tracking-wider text-gold-gradient block">Online Quran
-                            Academy</span>
-                    </div>
-                    <p class="text-xs text-gray-500 leading-relaxed">
-                        Spreading the light of the Quran globally. High quality, online Islamic classes using state of
-                        the art tools.
-                    </p>
-                </div>
-                <div>
-                    <h4 class="text-sm font-bold text-gold-400 mb-4 tracking-wider uppercase">Our Courses</h4>
-                    <ul class="text-xs text-gray-400 space-y-2">
-                        <li><a href="services.html" class="hover:text-gold-500 transition-colors">Noorani Qaida
-                                Reading</a></li>
-                        <li><a href="services.html" class="hover:text-gold-500 transition-colors">Tajweed-ul-Quran
-                                Rules</a></li>
-                        <li><a href="services.html" class="hover:text-gold-500 transition-colors">Hifz / Quran
-                                Memorization</a></li>
-                        <li><a href="services.html" class="hover:text-gold-500 transition-colors">Daily Supplications &
-                                prayers</a></li>
-                    </ul>
-                </div>
-                <div>
-                    <h4 class="text-sm font-bold text-gold-400 mb-4 tracking-wider uppercase">Academy Location</h4>
-                    <p class="text-xs text-gray-400 leading-relaxed mb-2">
-                        Lahore, Punjab, Pakistan (Active internationally across UK, US, Arab states and beyond)
-                    </p>
-                    <p class="text-xs text-gold-500 font-bold">
-                        ?? <a href="tel:+923074277240" class="hover:underline">+92 307 4277240</a>
-                    </p>
-                </div>
-            </div>
-            <div
-                class="border-t border-neutral-900 pt-8 flex flex-col sm:flex-row items-center justify-between text-xs text-gray-500">
-                <p>&copy; 2026 Online Quran Academy (Al Quran International). All rights reserved.</p>
-                <div class="flex space-x-4 mt-4 sm:mt-0">
-                    <a href="#" class="hover:text-gold-500 transition-colors"><i
-                            class="fa-brands fa-facebook text-base"></i></a>
-                    <a href="#" class="hover:text-gold-500 transition-colors"><i
-                            class="fa-brands fa-whatsapp text-base"></i></a>
-                    <a href="#" class="hover:text-gold-500 transition-colors"><i
-                            class="fa-brands fa-youtube text-base"></i></a>
-                </div>
-            </div>
-        </div>
+    <footer class="bg-neutral-950 border-t border-gold-500/10 py-6 text-center text-xs text-gray-500">
+        <p>&copy; 2026 Online Quran Academy. All Rights Reserved.</p>
     </footer>
 
-    <!-- ================= FLOATING ACTION BUTTONS ================= -->
-    <div class="fixed bottom-6 left-6 z-50 flex flex-col space-y-3">
-        <a href="tel:+923074277240"
-            class="w-12 h-12 bg-gold-500 text-black hover:bg-gold-600 rounded-full flex items-center justify-center shadow-lg shadow-gold-500/30 transition-transform hover:scale-110">
-            <i class="fa-solid fa-phone text-lg"></i>
-        </a>
-        <a href="https://wa.me/923074277240?text=Assalam-o-Alaikum,%20I%20want%20to%20apply%20for%20online%20Quran%20classes."
-            target="_blank" rel="noopener"
-            class="w-12 h-12 bg-[#25D366] text-white hover:bg-[#20ba59] rounded-full flex items-center justify-center shadow-lg shadow-emerald-500/30 transition-transform hover:scale-110">
-            <i class="fa-brands fa-whatsapp text-2xl"></i>
-        </a>
-    </div>
+    <!-- Script Injection for Dropdowns & Functional Burger Menu -->
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const paraSelect = document.getElementById('paraSelect');
+            const surahSelect = document.getElementById('surahSelect');
+            const placeholderState = document.getElementById('placeholderState');
+            const readingState = document.getElementById('readingState');
+            const contentHeader = document.getElementById('contentHeader');
+            const quranTextContent = document.getElementById('quranTextContent');
+            const fontSizeSlider = document.getElementById('fontSizeSlider');
 
-    <!-- ================= AI CHAT ASSISTANT WIDGET ================= -->
-    <div class="fixed bottom-6 right-6 z-50">
-        <button onclick="toggleChat()"
-            class="w-14 h-14 bg-gradient-to-tr from-gold-600 to-gold-400 text-black rounded-full shadow-lg shadow-gold-500/30 flex items-center justify-center transition-transform hover:scale-110 focus:outline-none">
-            <i class="fa-solid fa-robot text-xl"></i>
-            <span class="absolute -top-1 -right-1 w-3 h-3 bg-red-500 rounded-full border border-neutral-950"></span>
-        </button>
-        <div id="aiChatBox"
-            class="hidden absolute bottom-20 right-0 w-80 sm:w-96 bg-neutral-900 border border-gold-500/20 rounded-2xl shadow-2xl overflow-hidden flex flex-col">
-            <div class="bg-gold-500 p-4 text-black font-bold flex items-center justify-between">
-                <div class="flex items-center space-x-2">
-                    <i class="fa-solid fa-robot"></i>
-                    <div>
-                        <h4 class="text-sm font-bold leading-tight">Islamic AI Academy Assistant</h4>
-                        <span class="text-[10px] opacity-75">Always Online</span>
-                    </div>
-                </div>
-                <button onclick="toggleChat()" class="text-black hover:text-neutral-800 text-lg">
-                    <i class="fa-solid fa-xmark"></i>
-                </button>
-            </div>
-            <div id="chatMessages" class="p-4 h-64 overflow-y-auto space-y-3 text-xs flex flex-col">
-                <div
-                    class="bg-gold-500/10 border border-gold-500/20 self-start p-2.5 rounded-lg max-w-[80%] text-gray-300">
-                    Salam! I am your Quran Academy Assistant. How can I help you today with admission, courses, or
-                    scheduling?
-                </div>
-            </div>
-            <div class="p-3 border-t border-neutral-800 bg-neutral-950 flex items-center space-x-2">
-                <input type="text" id="chatInput" placeholder="Ask a question..."
-                    onkeydown="if(event.key==='Enter') sendMessage()"
-                    class="flex-grow bg-neutral-900 text-xs text-white border border-neutral-700 rounded-lg p-2 outline-none focus:border-gold-500">
-                <button onclick="sendMessage()"
-                    class="bg-gold-500 text-black px-3 py-2 rounded-lg hover:bg-gold-600 transition-colors">
-                    <i class="fa-solid fa-paper-plane text-xs"></i>
-                </button>
-            </div>
-        </div>
-    </div>
+            const paras = [
+                "Alif Lam Meem", "Sayaqool", "Tilkal Rusul", "Lan Tanaloo", "Wal Muhsanat",
+                "La Yuhibbullah", "Wa Iza Samiroo", "Wa Lau Annana", "Qal Al Mala'u", "Wa'lamu",
+                "Yata'zeroon", "Wa Mamin Da'abatin", "Wa Ma Ubarri'u", "Rubama", "Subhanallazi",
+                "Qal Alam", "Aqtaraba", "Qad Aflaha", "Wa Qalallazina", "Amman Khalaqa",
+                "Utlu Ma Oohiya", "Wa Manyaqnut", "Wa Maliya", "Faman Azlam", "Ilaihi Yuraddu",
+                "Ha'Meem", "Qala Fama Khatbukum", "Qad Sami'allah", "Tabarakallazi", "Amma Yatasa'aloon"
+            ];
 
-    <!-- ================= MULTI-FUNCTIONAL CORE SCRIPTS ================= -->
-    <script type="text/javascript">
-        // 1. Google Translate Initializer
-        function googleTranslateElementInit() {
-            new google.translate.TranslateElement({
-                pageLanguage: 'en',
-                includedLanguages: 'ar,ur,en,zh-CN,ko,ja,es,fa,hi,bn',
-                layout: google.translate.TranslateElement.InlineLayout.SIMPLE,
-                autoDisplay: false
-            }, 'google_translate_element');
-        }
+            const surahs = [
+                "Al-Fatihah", "Al-Baqarah", "Ali 'Imran", "An-Nisa", "Al-Ma'idah", "Al-An'am", "Al-A'raf", "Al-Anfal", "At-Tawbah", "Yunus",
+                "Hud", "Yusuf", "Ar-Ra'd", "Ibrahim", "Al-Hijr", "An-Nahl", "Al-Isra", "Al-Kahf", "Maryam", "Ta-Ha",
+                "Al-Anbiya", "Al-Hajj", "Al-Mu'minun", "An-Nur", "Al-Furqan", "Ash-Shu'ara", "An-Naml", "Al-Qasas", "Al-Ankabut", "Ar-Rum",
+                "Luqman", "As-Sajdah", "Al-Ahzab", "Saba", "Fatir", "Ya-Sin", "As-Saffat", "Sad", "Az-Zumar", "Ghafir",
+                "Fussilat", "Ash-Shura", "Az-Zukhruf", "Ad-Dukhan", "Al-Jathiyah", "Al-Ahqaf", "Muhammad", "Al-Fath", "Al-Hujurat", "Qaf",
+                "Adh-Dhariyat", "At-Tur", "An-Najm", "Al-Qamar", "Ar-Rahman", "Al-Waqi'ah", "Al-Hadid", "Al-Mujadilah", "Al-Hashr", "Al-Mumtahanah",
+                "As-Saff", "Al-Jumu'ah", "Al-Munafiqun", "At-Taghabun", "At-Talaq", "At-Tahrim", "Al-Mulk", "Al-Qalam", "Al-Haqqah", "Al-Ma'arij",
+                "Nuh", "Al-Jinn", "Al-Muzzammil", "Al-Muddaththir", "Al-Qiyamah", "Al-Insan", "Al-Mursalat", "An-Naba", "An-Naziat", "Abasa",
+                "At-Takwir", "Al-Infitar", "Al-Mutaffifin", "Al-Inshiqaq", "Al-Buruj", "At-Tariq", "Al-A'la", "Al-Ghashiyah", "Al-Fajr", "Al-Balad",
+                "Ash-Shams", "Al-Layl", "Ad-Duha", "Ash-Sharh", "At-Tin", "Al-Alaq", "Al-Qadr", "Al-Bayyinah", "Az-Zalzalah", "Al-Adiyat",
+                "Al-Qari'ah", "At-Takathur", "Al-Asr", "Al-Humazah", "Al-Fil", "Quraysh", "Al-Ma'un", "Al-Kawthar", "Al-Kafirun", "An-Nasr",
+                "Al-Masad", "Al-Ikhlas", "Al-Falaq", "An-Nas"
+            ];
 
-        // 2. Language Change Action (onchange trigger)
-        function translateLanguage(langCode) {
-            if (!langCode) return;
-            const googleSelect = document.querySelector('.goog-te-combo');
-            if (googleSelect) {
-                googleSelect.value = langCode;
-                googleSelect.dispatchEvent(new Event('change', { bubbles: true }));
-            } else {
-                setTimeout(() => translateLanguage(langCode), 500);
+            paras.forEach((p, index) => {
+                let opt = document.createElement('option');
+                opt.value = index + 1;
+                opt.textContent = `${index + 1}. ${p}`;
+                paraSelect.appendChild(opt);
+            });
+
+            surahs.forEach((s, index) => {
+                let opt = document.createElement('option');
+                opt.value = index + 1;
+                opt.textContent = `${index + 1}. ${s}`;
+                surahSelect.appendChild(opt);
+            });
+
+            function showReadingLayout(title, text) {
+                placeholderState.classList.add('hidden');
+                readingState.classList.remove('hidden');
+                contentHeader.textContent = title;
+                quranTextContent.textContent = text;
             }
-        }
 
-        // 3. Mobile Hamburger Menu Toggle
-        function toggleMobileMenu() {
-            const mobileMenu = document.getElementById('mobileMenu');
-            const menuIcon = document.getElementById('menuIcon');
-
-            mobileMenu.classList.toggle('hidden');
-
-            if (mobileMenu.classList.contains('hidden')) {
-                menuIcon.className = "fa-solid fa-bars";
-            } else {
-                menuIcon.className = "fa-solid fa-xmark";
+            function resetView() {
+                placeholderState.classList.remove('hidden');
+                readingState.classList.add('hidden');
             }
-        }
 
-        // 4. AI Assistant Chat Box
-        function toggleChat() {
-            const chatBox = document.getElementById('aiChatBox');
-            chatBox.classList.toggle('hidden');
-        }
+            paraSelect.addEventListener('change', () => {
+                const val = paraSelect.value;
+                if (!val) { resetView(); return; }
+                surahSelect.value = "";
+                const textName = paraSelect.options[paraSelect.selectedIndex].text;
+                showReadingLayout(`Juz / Para ${textName}`, "بِسْمِ اللَّهِ الرَّحْمَٰنِ الرَّحِيمِ. الۤمۤ ﴿١﴾ ذَٰلِكَ الْكِتَابُ لَا رَيْبَ ۛ فِيهِ ۛ هُدًى لِّلْمُتَّقِينَ ﴿٢﴾... [Selected Para Text Contents Display Right Here]");
+            });
 
-        function sendMessage() {
-            const input = document.getElementById('chatInput');
-            const messagesArea = document.getElementById('chatMessages');
-            const userText = input.value.trim();
+            surahSelect.addEventListener('change', () => {
+                const val = surahSelect.value;
+                if (!val) { resetView(); return; }
+                paraSelect.value = "";
+                const textName = surahSelect.options[surahSelect.selectedIndex].text;
+                showReadingLayout(`Surah ${textName}`, "بِسْمِ اللَّهِ الرَّحْمَٰنِ الرَّحِيمِ. الْحَمْدُ لِلَّهِ رَبِّ الْعَالَمِينَ ﴿١﴾ الرَّحْمَٰنِ الرَّحِيمِ ﴿٢﴾ مَالِكِ يَوْمِ الدِّينِ ﴿٣﴾... [Selected Surah Text Contents Display Right Here]");
+            });
 
-            if (!userText) return;
+            fontSizeSlider.addEventListener('input', (e) => {
+                quranTextContent.style.fontSize = e.target.value + 'px';
+            });
 
-            const userBubble = document.createElement('div');
-            userBubble.className = "bg-neutral-800 self-end p-2.5 rounded-lg max-w-[80%] text-white";
-            userBubble.textContent = userText;
-            messagesArea.appendChild(userBubble);
+            // Reliable Mobile Menu Click Event Trigger
+            const menuBtn = document.getElementById('mobileMenuBtn');
+            const dropdownMenu = document.getElementById('mobileDropdownMenu');
+            const hamburgerIcon = document.getElementById('hamburgerIcon');
+            const closeIcon = document.getElementById('closeIcon');
 
-            input.value = '';
-            messagesArea.scrollTop = messagesArea.scrollHeight;
+            if (menuBtn && dropdownMenu) {
+                menuBtn.addEventListener('click', (e) => {
+                    e.stopPropagation();
+                    dropdownMenu.classList.toggle('hidden');
+                    hamburgerIcon.classList.toggle('hidden');
+                    closeIcon.classList.toggle('hidden');
+                });
 
-            setTimeout(() => {
-                const botBubble = document.createElement('div');
-                botBubble.className = "bg-gold-500/10 border border-gold-500/20 self-start p-2.5 rounded-lg max-w-[80%] text-gray-300";
-
-                let response = "Jazakallah for reaching out! For instant trial setups or personalized schedule discussions, please press the WhatsApp icon on the bottom left of your screen to directly talk with our administrator.";
-                const query = userText.toLowerCase();
-
-                if (query.includes('course') || query.includes('courses') || query.includes('offer') || query.includes('study') || query.includes('classes')) {
-                    response = "We offer the following premium Quranic courses:\n\n" +
-                        "1. Noorani Qaida (Arabic alphabets and reading foundation)\n" +
-                        "2. Tajweed-ul-Quran (Correct pronunciation rules)\n" +
-                        "3. Quran Hifz (Flexible Quran Memorization program)\n" +
-                        "4. Islamic Supplications (Daily Duas, Prayers/Salah rules, and Sunnah)\n\n" +
-                        "We offer 3 days of free trial classes. Please let me know which one you'd like to join!";
-                } else if (query.includes('fee') || query.includes('price') || query.includes('charges') || query.includes('cost')) {
-                    response = "Our fee packages are very budget-friendly and custom-designed based on the number of classes you take per week. Please contact us on WhatsApp (+92 307 4277240) to receive the exact fee plans according to your timezone.";
-                } else if (query.includes('timing') || query.includes('schedule') || query.includes('time') || query.includes('when')) {
-                    response = "We operate 24/7! Classes can be customized according to any timezone or timeframe that is convenient for you or your kids.";
-                } else if (query.includes('trial') || query.includes('free') || query.includes('apply')) {
-                    response = "You can register for a 3-day free trial right now by filling out the 'Apply' form on top of our homepage, or message us directly on WhatsApp (+92 307 4277240) for fast scheduling.";
-                }
-
-                botBubble.innerHTML = response.replace(/\n/g, '<br>');
-                messagesArea.appendChild(botBubble);
-                messagesArea.scrollTop = messagesArea.scrollHeight;
-            }, 800);
-        }
+                // Document click hides active open mobile panel automatically
+                document.addEventListener('click', () => {
+                    if (!dropdownMenu.classList.contains('hidden')) {
+                        dropdownMenu.classList.add('hidden');
+                        hamburgerIcon.classList.remove('hidden');
+                        closeIcon.classList.add('hidden');
+                    }
+                });
+            }
+        });
     </script>
-
 </body>
 
 </html>
