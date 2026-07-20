@@ -111,8 +111,8 @@
                         <span>+92 307 4277240</span>
                     </a>
 
-                    
-                    
+
+
                 </div>
             </div>
         </div>
@@ -143,81 +143,72 @@
     </section>
 
     <!-- ================= READER INTERFACE ================= -->
-    <section class="py-12 max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div class="bg-neutral-900/60 border border-gold-500/10 rounded-3xl p-6 md:p-8 space-y-6">
+    <main class="flex-grow max-w-7xl w-full mx-auto px-4 sm:px-6 lg:px-8 py-10">
+        <div class="bg-neutral-900/60 border border-gold-500/10 p-6 md:p-8 rounded-3xl shadow-2xl backdrop-blur-sm">
 
-            <!-- Controls Panel -->
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-6 items-center border-b border-neutral-800 pb-6">
-                <!-- Select Para -->
+            <!-- Selector Row -->
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6 items-center border-b border-neutral-800 pb-6 mb-8">
+                <!-- Para Selector -->
                 <div>
-                    <label class="block text-xs font-semibold text-gray-400 mb-2">Choose Para (Juz):</label>
-                    <select id="juzSelect" onchange="loadJuz(this.value)"
-                        class="w-full bg-neutral-950 border border-gold-500/20 text-gold-400 text-sm rounded-xl p-3 outline-none focus:border-gold-500 cursor-pointer">
-                        <option value="">-- Select Para --</option>
-                        <!-- Loop will generate 1 to 30 via JS -->
+                    <label class="block text-xs font-semibold text-gray-400 uppercase tracking-wider mb-2">Choose Para
+                        (Juz):</label>
+                    <select id="paraSelect" onchange="loadParaContent()"
+                        class="w-full bg-neutral-950 border border-neutral-800 focus:border-gold-500 text-gray-200 rounded-xl px-4 py-3 text-sm outline-none transition-all">
+                        <option value="" selected>-- Select Para --</option>
                     </select>
                 </div>
 
-                <!-- Select Surah -->
+                <!-- Surah Selector -->
                 <div>
-                    <label class="block text-xs font-semibold text-gray-400 mb-2">Choose Surah:</label>
-                    <select id="surahSelect" onchange="loadSurah(this.value)"
-                        class="w-full bg-neutral-950 border border-gold-500/20 text-gold-400 text-sm rounded-xl p-3 outline-none focus:border-gold-500 cursor-pointer">
-                        <option value="">-- Select Surah --</option>
-                        <!-- Will load dynamically via API on start -->
+                    <label class="block text-xs font-semibold text-gray-400 uppercase tracking-wider mb-2">Choose
+                        Surah:</label>
+                    <select id="surahSelect" onchange="loadSurahContent()"
+                        class="w-full bg-neutral-950 border border-neutral-800 focus:border-gold-500 text-gray-200 rounded-xl px-4 py-3 text-sm outline-none transition-all">
+                        <option value="" selected>-- Select Surah --</option>
                     </select>
                 </div>
 
-                <!-- Text Size Adjuster -->
+                <!-- Font Size Adjuster -->
                 <div>
-                    <label class="block text-xs font-semibold text-gray-400 mb-2">Adjust Font Size:</label>
-                    <div class="flex items-center space-x-3">
+                    <label class="block text-xs font-semibold text-gray-400 uppercase tracking-wider mb-2">Adjust Font
+                        Size:</label>
+                    <div class="flex items-center space-x-4">
                         <span class="text-xs text-gray-500">A</span>
-                        <input type="range" id="fontSizeSlider" min="20" max="50" value="32"
+                        <input type="range" id="fontSizeSlider" min="20" max="50" value="30"
                             oninput="adjustFontSize(this.value)"
-                            class="w-full accent-gold-500 h-1 bg-neutral-950 rounded-lg appearance-none cursor-pointer">
-                        <span class="text-lg text-gold-500 font-bold">A</span>
+                            class="w-full accent-gold-500 cursor-pointer bg-neutral-800 h-1 rounded-lg appearance-none">
+                        <span class="text-lg font-bold text-gold-400">A</span>
                     </div>
                 </div>
             </div>
 
-            <!-- Loading Spinner -->
-            <div id="loading" class="hidden text-center py-20 space-y-3">
-                <i class="fa-solid fa-spinner fa-spin text-3xl text-gold-500"></i>
-                <p class="text-xs text-gray-400 font-semibold">Fetching verses from Quran API...</p>
-            </div>
-
-            <!-- Quran Text Render Box -->
-            <div id="quranDisplayBox"
-                class="min-h-[400px] bg-neutral-950/80 rounded-2xl p-6 md:p-10 border border-neutral-800 hidden text-center">
-                <div id="readerHeader" class="mb-8 border-b border-gold-500/10 pb-4">
-                    <h2 id="readerTitle" class="text-xl font-serif font-bold text-gold-400">Please Select an option
-                        above</h2>
+            <!-- Content Rendering Window -->
+            <div id="quranDisplayWindow"
+                class="min-h-[400px] flex flex-col items-center justify-center text-center p-6 transition-all duration-300">
+                <!-- Initial State Placeholder Container -->
+                <div id="placeholderState" class="space-y-4">
+                    <div class="text-gold-500 text-6xl opacity-40 mb-2">
+                        <i class="fa-solid fa-book-quran"></i>
+                    </div>
+                    <h3 class="font-serif text-xl font-bold uppercase tracking-wider text-gray-300">No Para Or Surah
+                        Selected</h3>
+                    <p class="text-gray-500 text-sm max-w-sm mx-auto">Please choose a Para (Juz) or Surah from the
+                        dropdown controls above to start reading.</p>
                 </div>
 
-                <!-- Bismillah Al-Rahman Al-Rahim (Optional Display) -->
-                <div id="bismillah" class="text-3xl text-gold-500 font-quran mb-8 hidden">
-                    ?????? ??????? ???????????? ??????????
+                <!-- Dynamic Reading Content Container (Hidden Initially) -->
+                <div id="readingState" class="hidden w-full text-right dir-rtl space-y-6">
+                    <h2 id="contentHeader"
+                        class="text-center font-serif text-2xl font-bold text-gold-400 mb-6 border-b border-neutral-800 pb-4">
+                    </h2>
+                    <p id="quranTextContent"
+                        class="font-quran leading-loose text-gray-100 tracking-wide select-none p-4 md:p-8 whitespace-normal text-justify"
+                        style="font-size: 30px; direction: rtl;"></p>
                 </div>
-
-                <!-- Verses Area -->
-                <div id="versesContainer" dir="rtl"
-                    class="font-quran leading-loose tracking-wide text-right flex flex-wrap justify-center gap-y-6 gap-x-4 select-none">
-                    <!-- Dynamic verses go here -->
-                </div>
-            </div>
-
-            <!-- Empty State -->
-            <div id="emptyState" class="text-center py-24 space-y-4">
-                <div class="text-gold-500/30 text-5xl"><i class="fa-solid fa-book-quran"></i></div>
-                <h3 class="text-lg font-serif font-bold text-gray-400">No Para or Surah Selected</h3>
-                <p class="text-xs text-gray-500 max-w-xs mx-auto">Please choose a Para (Juz) or Surah from the dropdown
-                    controls above to start reading.</p>
             </div>
 
         </div>
-    </section>
-
+    </main>
     <!-- ================= FOOTER ================= -->
     <footer class="bg-neutral-950 py-12 border-t border-gold-500/20">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -416,4 +407,3 @@
 </body>
 
 </html>
-
