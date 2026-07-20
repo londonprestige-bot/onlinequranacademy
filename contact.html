@@ -150,10 +150,10 @@
                         <label class="block text-xs font-semibold text-gray-400 mb-1.5">Select Course Interest</label>
                         <select
                             class="w-full bg-neutral-900 border border-neutral-800 focus:border-gold-500 text-sm rounded-xl p-3 outline-none text-gray-400 transition-colors">
-                            <option>Noorani Qaida Course</option>
+                            <option>Madni Qaida Course</option>
                             <option>Tajweed-ul-Quran Rules</option>
-                            <option>Quran Hifz (Memorization)</option>
-                            <option>Daily Islamic Supplications</option>
+                            <option>Nazra Quran</option>
+                            <option>Hadis Nimaz/Basic Islam</option>
                         </select>
                     </div>
                     <div>
@@ -213,58 +213,46 @@
             </div>
         </div>
     </section>
-    <!-- ================= GLOBAL LANGUAGE TRANSLATOR ================= -->
-    <div class="bg-neutral-900/40 border-t border-neutral-800 py-4 text-center w-full">
-        <div class="max-w-7xl mx-auto px-4 flex flex-col sm:flex-row items-center justify-center gap-3">
+
+    <!-- Dynamic Translation Gateway -->
+    <div class="bg-neutral-900/40 border-t border-neutral-800 py-6 text-center w-full">
+        <div class="max-w-7xl mx-auto px-4 flex flex-col items-center justify-center gap-3">
             <span class="text-xs text-gray-400 font-medium tracking-wide">
-                <i class="fa-solid fa-language text-gold-400 mr-1 text-sm"></i> Select Your Language:
+                <i class="fa-solid fa-language text-gold-400 mr-1 text-sm"></i> Translate Website:
             </span>
-            <!-- Google Translate Dropdown Container -->
-            <div id="google_element"
-                class="inline-block overflow-hidden rounded-md border border-gold-500/20 bg-neutral-950 text-xs text-white">
+            <!-- Language Buttons Layout -->
+            <div class="flex flex-wrap justify-center gap-3 text-xs mt-1">
+                <button onclick="translateSite('zh-CN')"
+                    class="text-gray-300 hover:text-gold-400 transition-colors px-3 py-1.5 bg-neutral-950 border border-neutral-800 rounded-md hover:border-gold-500/30">Chinese
+                    (中文)</button>
+                <button onclick="translateSite('fr')"
+                    class="text-gray-300 hover:text-gold-400 transition-colors px-3 py-1.5 bg-neutral-950 border border-neutral-800 rounded-md hover:border-gold-500/30">French
+                    (Français)</button>
+                <button onclick="translateSite('ja')"
+                    class="text-gray-300 hover:text-gold-400 transition-colors px-3 py-1.5 bg-neutral-950 border border-neutral-800 rounded-md hover:border-gold-500/30">Japanese
+                    (日本語)</button>
+                <button onclick="translateSite('ko')"
+                    class="text-gray-300 hover:text-gold-400 transition-colors px-3 py-1.5 bg-neutral-950 border border-neutral-800 rounded-md hover:border-gold-500/30">Korean
+                    (한국어)</button>
+                <button onclick="translateSite('tr')"
+                    class="text-gray-300 hover:text-gold-400 transition-colors px-3 py-1.5 bg-neutral-950 border border-neutral-800 rounded-md hover:border-gold-500/30">Turkish
+                    (Türkçe)</button>
+                <button onclick="translateSite('es')"
+                    class="text-gray-300 hover:text-gold-400 transition-colors px-3 py-1.5 bg-neutral-950 border border-neutral-800 rounded-md hover:border-gold-500/30">Spanish
+                    (Español)</button>
             </div>
         </div>
     </div>
 
-    <!-- Google Translate Scripts (Put this right before the </body> tag if possible) -->
-    <script type="text/javascript">
-        function googleTranslateElementInit() {
-            new google.translate.TranslateElement({
-                pageLanguage: 'en',
-                layout: google.translate.TranslateElement.InlineLayout.SIMPLE
-            }, 'google_element');
+    <!-- Dynamic Router Script -->
+    <script>
+        function translateSite(targetLang) {
+            // Yeh script automatic aapki active url (chahe vercel ho ya .com) pick kar lega
+            var currentUrl = window.location.href;
+            var googleTranslateUrl = "https://translate.google.com/translate?sl=en&tl=" + targetLang + "&u=" + encodeURIComponent(currentUrl);
+            window.open(googleTranslateUrl, '_blank');
         }
     </script>
-    <script type="text/javascript"
-        src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
-
-    <style>
-        /* Google Translate Styles Clean Up for Dark Theme */
-        .goog-te-gadget {
-            font-family: inherit !important;
-            font-size: 12px !important;
-            color: #a3a3a3 !important;
-        }
-
-        .goog-te-gadget-simple {
-            background-color: #0a0a0a !important;
-            border: 1px solid rgba(212, 163, 89, 0.2) !important;
-            padding: 4px 8px !important;
-            border-radius: 6px !important;
-        }
-
-        .goog-te-gadget-simple .goog-te-menu-value span {
-            color: #d4d4d4 !important;
-        }
-
-        .goog-te-banner-frame.skiptranslate {
-            display: none !important;
-        }
-
-        body {
-            top: 0px !important;
-        }
-    </style>
     <!-- ================= FOOTER ================= -->
     <footer class="bg-neutral-950 py-12 border-t border-gold-500/20">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -285,14 +273,15 @@
                 <div>
                     <h4 class="text-sm font-bold text-gold-400 mb-4 tracking-wider uppercase">Our Courses</h4>
                     <ul class="text-xs text-gray-400 space-y-2">
-                        <li><a href="services.html" class="hover:text-gold-500 transition-colors">Noorani Qaida
-                                Reading</a></li>
+                        <li><a href="services.html" class="hover:text-gold-500 transition-colors">Madni Qaida
+                            </a></li>
                         <li><a href="services.html" class="hover:text-gold-500 transition-colors">Tajweed-ul-Quran
-                                Rules</a></li>
-                        <li><a href="services.html" class="hover:text-gold-500 transition-colors">Hifz / Quran
-                                Memorization</a></li>
-                        <li><a href="services.html" class="hover:text-gold-500 transition-colors">Daily Supplications &
-                                prayers</a></li>
+                            </a></li>
+                        <li><a href="services.html" class="hover:text-gold-500 transition-colors">Nazra Quran
+                            </a></li>
+                        <li><a href="services.html" class="hover:text-gold-500 transition-colors">Hadis Nimaz/Basic
+                                Islam
+                            </a></li>
                     </ul>
                 </div>
                 <!-- Quick Navigation Links -->
@@ -312,7 +301,7 @@
                         Lahore, Punjab, Pakistan (Active internationally across UK, US, Arab states and beyond)
                     </p>
                     <p class="text-xs text-gold-500 font-bold">
-                        ?? <a href="tel:+923075329240" class="hover:underline">+923075329240</a>
+                        <a href="tel:+923075329240" class="hover:underline">+923075329240</a>
                     </p>
                 </div>
             </div>
