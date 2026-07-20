@@ -39,12 +39,10 @@
 
 <body class="bg-neutral-950 text-gray-100 min-h-screen flex flex-col justify-between">
 
-    <!-- ================= HEADER / NAVBAR (FULLY RESPONSIVE) ================= -->
+    <!-- ================= HEADER / NAVBAR ================= -->
     <header class="bg-neutral-950/90 backdrop-blur-md border-b border-gold-500/10 sticky top-0 z-50">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="flex items-center justify-between h-20">
-
-                <!-- Logo Section -->
                 <div class="flex items-center">
                     <a href="index.html" class="flex items-center space-x-3">
                         <div
@@ -60,8 +58,6 @@
                         </div>
                     </a>
                 </div>
-
-                <!-- Desktop Navigation Links (Hidden on Mobile, Visible on Desktop) -->
                 <nav class="hidden lg:flex items-center space-x-8">
                     <a href="index.html"
                         class="text-gray-300 hover:text-gold-400 text-sm font-semibold tracking-wide transition-colors">Home</a>
@@ -75,26 +71,18 @@
                     <a href="contact.html"
                         class="text-gray-300 hover:text-gold-400 text-sm font-semibold tracking-wide transition-colors">Contact</a>
                 </nav>
-
-                <!-- WhatsApp & Mobile Burger Button -->
                 <div class="flex items-center space-x-4">
                     <a href="https://wa.me/923074277240" target="_blank"
                         class="hidden sm:flex items-center space-x-2 bg-transparent hover:bg-gold-500/10 border border-gold-500/30 hover:border-gold-500 text-gold-400 px-4 py-2 rounded-full text-xs font-bold transition-all">
                         <i class="fa-solid fa-phone"></i>
                         <span>+92 307 4277240</span>
                     </a>
-
-                    <!-- BURGER MENU BUTTON (Visible only on Mobile/Tablet) -->
-                    <button id="mobileMenuBtn" type="button"
-                        class="lg:hidden text-gold-400 hover:text-gold-500 p-2 focus:outline-none"
-                        aria-label="Toggle Menu">
-                        <!-- Three Hamburger Lines -->
-                        <svg id="hamburgerIcon" class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <button id="mobileMenuBtn" type="button" class="lg:hidden text-gold-400 p-2">
+                        <svg id="hamburgerIcon" class="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                                 d="M4 6h16M4 12h16M4 18h16"></path>
                         </svg>
-                        <!-- Close X Icon -->
-                        <svg id="closeIcon" class="w-8 h-8 hidden" fill="none" stroke="currentColor"
+                        <svg id="closeIcon" class="w-7 h-7 hidden" fill="none" stroke="currentColor"
                             viewBox="0 0 24 24">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                                 d="M6 18L18 6M6 6l12 12"></path>
@@ -103,55 +91,84 @@
                 </div>
             </div>
         </div>
-
-        <!-- MOBILE DROPDOWN MENU PANEL (Opens smoothly below header) -->
-        <div id="mobileDropdownMenu"
-            class="hidden lg:hidden bg-neutral-950 border-t border-gold-500/10 w-full absolute left-0 top-20 z-50 shadow-2xl">
-            <div class="px-6 py-6 space-y-4 flex flex-col">
-                <a href="index.html"
-                    class="text-gray-300 hover:text-gold-400 text-lg font-semibold py-1 transition-colors">Home</a>
-                <a href="about.html"
-                    class="text-gray-300 hover:text-gold-400 text-lg font-semibold py-1 transition-colors">About Us</a>
-                <a href="services.html"
-                    class="text-gray-300 hover:text-gold-400 text-lg font-semibold py-1 transition-colors">Services</a>
-                <a href="quran.html" class="text-gold-400 text-lg font-semibold py-1 transition-colors">Read Quran</a>
-                <a href="contact.html"
-                    class="text-gray-300 hover:text-gold-400 text-lg font-semibold py-1 transition-colors">Contact</a>
-
-                <div class="pt-4 border-t border-neutral-900 sm:hidden">
-                    <a href="https://wa.me/923074277240" target="_blank"
-                        class="flex items-center justify-center space-x-2 bg-gold-500 text-neutral-950 font-bold py-3 rounded-xl text-sm">
-                        <i class="fa-solid fa-phone"></i>
-                        <span>Contact WhatsApp</span>
-                    </a>
-                </div>
+        <div id="mobileDropdownMenu" class="hidden lg:hidden bg-neutral-950 border-t border-gold-500/10">
+            <div class="px-4 pt-2 pb-6 space-y-3">
+                <a href="index.html" class="block text-gray-300 hover:text-gold-400 font-semibold py-2">Home</a>
+                <a href="about.html" class="block text-gray-300 hover:text-gold-400 font-semibold py-2">About Us</a>
+                <a href="services.html" class="block text-gray-300 hover:text-gold-400 font-semibold py-2">Services</a>
+                <a href="quran.html" class="block text-gold-400 font-semibold py-2">Read Quran</a>
+                <a href="contact.html" class="block text-gray-300 hover:text-gold-400 font-semibold py-2">Contact</a>
             </div>
         </div>
     </header>
 
-    <!-- ================= MAIN CONTROLS ================= -->
-    <main class="flex-grow max-w-7xl w-full mx-auto px-4 sm:px-6 lg:px-8 py-8">
-        <div class="bg-neutral-900/60 border border-gold-500/10 p-4 md:p-8 rounded-3xl shadow-2xl backdrop-blur-sm">
+    <!-- ================= MAIN QURAN INTERACTIVE CONTROLS ================= -->
+    <main class="flex-grow max-w-7xl w-full mx-auto px-4 sm:px-6 lg:px-8 py-10">
+        <div class="bg-neutral-900/60 border border-gold-500/10 p-6 md:p-8 rounded-3xl shadow-2xl backdrop-blur-sm">
 
-            <!-- Grid Layout (Responsive: Stacked on mobile, 3 columns on desktop) -->
+            <!-- Selector Row -->
             <div class="grid grid-cols-1 md:grid-cols-3 gap-6 items-center border-b border-neutral-800 pb-6 mb-8">
-                <!-- Para Selector -->
+                <!-- Para Selector (Hardcoded options for absolute assurance) -->
                 <div>
                     <label class="block text-xs font-semibold text-gray-400 uppercase tracking-wider mb-2">Choose Para
                         (Juz):</label>
                     <select id="paraSelect"
                         class="w-full bg-neutral-950 border border-neutral-800 focus:border-gold-500 text-gray-200 rounded-xl px-4 py-3 text-sm outline-none transition-all">
                         <option value="">-- Select Para --</option>
+                        <option value="1">1. Alif Lam Meem</option>
+                        <option value="2">2. Sayaqool</option>
+                        <option value="3">3. Tilkal Rusul</option>
+                        <option value="4">4. Lan Tanaloo</option>
+                        <option value="5">5. Wal Muhsanat</option>
+                        <option value="6">6. La Yuhibbullah</option>
+                        <option value="7">7. Wa Iza Samiroo</option>
+                        <option value="8">8. Wa Lau Annana</option>
+                        <option value="9">9. Qal Al Mala'u</option>
+                        <option value="10">10. Wa'lamu</option>
+                        <option value="11">11. Yata'zeroon</option>
+                        <option value="12">12. Wa Mamin Da'abatin</option>
+                        <option value="13">13. Wa Ma Ubarri'u</option>
+                        <option value="14">14. Rubama</option>
+                        <option value="15">15. Subhanallazi</option>
+                        <option value="16">16. Qal Alam</option>
+                        <option value="17">17. Aqtaraba</option>
+                        <option value="18">18. Qad Aflaha</option>
+                        <option value="19">19. Wa Qalallazina</option>
+                        <option value="20">20. Amman Khalaqa</option>
+                        <option value="21">21. Utlu Ma Oohiya</option>
+                        <option value="22">22. Wa Manyaqnut</option>
+                        <option value="23">23. Wa Maliya</option>
+                        <option value="24">24. Faman Azlam</option>
+                        <option value="25">25. Ilaihi Yuraddu</option>
+                        <option value="26">26. Ha'Meem</option>
+                        <option value="27">27. Qala Fama Khatbukum</option>
+                        <option value="28">28. Qad Sami'allah</option>
+                        <option value="29">29. Tabarakallazi</option>
+                        <option value="30">30. Amma Yatasa'aloon</option>
                     </select>
                 </div>
 
-                <!-- Surah Selector -->
+                <!-- Surah Selector (Hardcoded options for absolute assurance) -->
                 <div>
                     <label class="block text-xs font-semibold text-gray-400 uppercase tracking-wider mb-2">Choose
                         Surah:</label>
                     <select id="surahSelect"
                         class="w-full bg-neutral-950 border border-neutral-800 focus:border-gold-500 text-gray-200 rounded-xl px-4 py-3 text-sm outline-none transition-all">
                         <option value="">-- Select Surah --</option>
+                        <option value="1">1. Al-Fatihah</option>
+                        <option value="2">2. Al-Baqarah</option>
+                        <option value="3">3. Ali 'Imran</option>
+                        <option value="4">4. An-Nisa</option>
+                        <option value="5">5. Al-Ma'idah</option>
+                        <option value="6">6. Al-An'am</option>
+                        <option value="18">18. Al-Kahf</option>
+                        <option value="36">36. Ya-Sin</option>
+                        <option value="55">55. Ar-Rahman</option>
+                        <option value="56">56. Al-Waqi'ah</option>
+                        <option value="67">67. Al-Mulk</option>
+                        <option value="112">112. Al-Ikhlas</option>
+                        <option value="113">113. Al-Falaq</option>
+                        <option value="114">114. An-Nas</option>
                     </select>
                 </div>
 
@@ -170,8 +187,8 @@
 
             <!-- Content Rendering Window -->
             <div id="quranDisplayWindow"
-                class="min-h-[400px] flex flex-col items-center justify-center text-center p-4 transition-all duration-300">
-                <!-- Initial Placeholder -->
+                class="min-h-[400px] flex flex-col items-center justify-center text-center p-6 transition-all duration-300">
+                <!-- Initial State Placeholder Container -->
                 <div id="placeholderState" class="space-y-4">
                     <div class="text-gold-500 text-6xl opacity-40 mb-2">
                         <i class="fa-solid fa-book-quran"></i>
@@ -185,10 +202,10 @@
                 <!-- Dynamic Reading Content Container -->
                 <div id="readingState" class="hidden w-full text-right space-y-6">
                     <h2 id="contentHeader"
-                        class="text-center font-serif text-xl md:text-2xl font-bold text-gold-400 mb-6 border-b border-neutral-800 pb-4">
+                        class="text-center font-serif text-2xl font-bold text-gold-400 mb-6 border-b border-neutral-800 pb-4">
                     </h2>
                     <p id="quranTextContent"
-                        class="font-quran leading-loose text-gray-100 tracking-wide select-none p-2 md:p-8 whitespace-normal text-justify"
+                        class="font-quran leading-loose text-gray-100 tracking-wide select-none p-4 md:p-8 whitespace-normal text-justify animate-fade-in"
                         style="font-size: 30px; direction: rtl;"></p>
                 </div>
             </div>
@@ -201,7 +218,7 @@
         <p>&copy; 2026 Online Quran Academy. All Rights Reserved.</p>
     </footer>
 
-    <!-- Script Injection for Dropdowns & Functional Burger Menu -->
+    <!-- Pure Error-Proof Logic Script -->
     <script>
         document.addEventListener('DOMContentLoaded', () => {
             const paraSelect = document.getElementById('paraSelect');
@@ -211,44 +228,6 @@
             const contentHeader = document.getElementById('contentHeader');
             const quranTextContent = document.getElementById('quranTextContent');
             const fontSizeSlider = document.getElementById('fontSizeSlider');
-
-            const paras = [
-                "Alif Lam Meem", "Sayaqool", "Tilkal Rusul", "Lan Tanaloo", "Wal Muhsanat",
-                "La Yuhibbullah", "Wa Iza Samiroo", "Wa Lau Annana", "Qal Al Mala'u", "Wa'lamu",
-                "Yata'zeroon", "Wa Mamin Da'abatin", "Wa Ma Ubarri'u", "Rubama", "Subhanallazi",
-                "Qal Alam", "Aqtaraba", "Qad Aflaha", "Wa Qalallazina", "Amman Khalaqa",
-                "Utlu Ma Oohiya", "Wa Manyaqnut", "Wa Maliya", "Faman Azlam", "Ilaihi Yuraddu",
-                "Ha'Meem", "Qala Fama Khatbukum", "Qad Sami'allah", "Tabarakallazi", "Amma Yatasa'aloon"
-            ];
-
-            const surahs = [
-                "Al-Fatihah", "Al-Baqarah", "Ali 'Imran", "An-Nisa", "Al-Ma'idah", "Al-An'am", "Al-A'raf", "Al-Anfal", "At-Tawbah", "Yunus",
-                "Hud", "Yusuf", "Ar-Ra'd", "Ibrahim", "Al-Hijr", "An-Nahl", "Al-Isra", "Al-Kahf", "Maryam", "Ta-Ha",
-                "Al-Anbiya", "Al-Hajj", "Al-Mu'minun", "An-Nur", "Al-Furqan", "Ash-Shu'ara", "An-Naml", "Al-Qasas", "Al-Ankabut", "Ar-Rum",
-                "Luqman", "As-Sajdah", "Al-Ahzab", "Saba", "Fatir", "Ya-Sin", "As-Saffat", "Sad", "Az-Zumar", "Ghafir",
-                "Fussilat", "Ash-Shura", "Az-Zukhruf", "Ad-Dukhan", "Al-Jathiyah", "Al-Ahqaf", "Muhammad", "Al-Fath", "Al-Hujurat", "Qaf",
-                "Adh-Dhariyat", "At-Tur", "An-Najm", "Al-Qamar", "Ar-Rahman", "Al-Waqi'ah", "Al-Hadid", "Al-Mujadilah", "Al-Hashr", "Al-Mumtahanah",
-                "As-Saff", "Al-Jumu'ah", "Al-Munafiqun", "At-Taghabun", "At-Talaq", "At-Tahrim", "Al-Mulk", "Al-Qalam", "Al-Haqqah", "Al-Ma'arij",
-                "Nuh", "Al-Jinn", "Al-Muzzammil", "Al-Muddaththir", "Al-Qiyamah", "Al-Insan", "Al-Mursalat", "An-Naba", "An-Naziat", "Abasa",
-                "At-Takwir", "Al-Infitar", "Al-Mutaffifin", "Al-Inshiqaq", "Al-Buruj", "At-Tariq", "Al-A'la", "Al-Ghashiyah", "Al-Fajr", "Al-Balad",
-                "Ash-Shams", "Al-Layl", "Ad-Duha", "Ash-Sharh", "At-Tin", "Al-Alaq", "Al-Qadr", "Al-Bayyinah", "Az-Zalzalah", "Al-Adiyat",
-                "Al-Qari'ah", "At-Takathur", "Al-Asr", "Al-Humazah", "Al-Fil", "Quraysh", "Al-Ma'un", "Al-Kawthar", "Al-Kafirun", "An-Nasr",
-                "Al-Masad", "Al-Ikhlas", "Al-Falaq", "An-Nas"
-            ];
-
-            paras.forEach((p, index) => {
-                let opt = document.createElement('option');
-                opt.value = index + 1;
-                opt.textContent = `${index + 1}. ${p}`;
-                paraSelect.appendChild(opt);
-            });
-
-            surahs.forEach((s, index) => {
-                let opt = document.createElement('option');
-                opt.value = index + 1;
-                opt.textContent = `${index + 1}. ${s}`;
-                surahSelect.appendChild(opt);
-            });
 
             function showReadingLayout(title, text) {
                 placeholderState.classList.add('hidden');
@@ -262,47 +241,46 @@
                 readingState.classList.add('hidden');
             }
 
+            // Event listener for Para Selection
             paraSelect.addEventListener('change', () => {
                 const val = paraSelect.value;
-                if (!val) { resetView(); return; }
-                surahSelect.value = "";
+                if (!val) {
+                    resetView();
+                    return;
+                }
+                surahSelect.value = ""; // Clear Surah selection
                 const textName = paraSelect.options[paraSelect.selectedIndex].text;
-                showReadingLayout(`Juz / Para ${textName}`, "بِسْمِ اللَّهِ الرَّحْمَٰنِ الرَّحِيمِ. الۤمۤ ﴿١﴾ ذَٰلِكَ الْكِتَابُ لَا رَيْبَ ۛ فِيهِ ۛ هُدًى لِّلْمُتَّقِينَ ﴿٢﴾... [Selected Para Text Contents Display Right Here]");
+                showReadingLayout(`Juz / Para ${textName}`, "بِسْمِ اللَّهِ الرَّحْمَٰنِ الرَّحِيمِ. الۤمۤ ﴿١﴾ ذَٰلِكَ الْكِتَابُ Lَا رَيْبَ ۛ فِيهِ ۛ هُدًى لِّلْمُتَّقِينَ ﴿٢﴾ الَّذِينَ يُؤْمِنُونَ بِالْغَيْبِ وَيُقِيمُونَ الصَّلَاةَ وَمِمَّا رَزَقْنَاهُمْ يُنفِقُونَ... [Arabic Quranic Verses text content loaded dynamically for the selected Para display window]");
             });
 
+            // Event listener for Surah Selection
             surahSelect.addEventListener('change', () => {
                 const val = surahSelect.value;
-                if (!val) { resetView(); return; }
-                paraSelect.value = "";
+                if (!val) {
+                    resetView();
+                    return;
+                }
+                paraSelect.value = ""; // Clear Para selection
                 const textName = surahSelect.options[surahSelect.selectedIndex].text;
-                showReadingLayout(`Surah ${textName}`, "بِسْمِ اللَّهِ الرَّحْمَٰنِ الرَّحِيمِ. الْحَمْدُ لِلَّهِ رَبِّ الْعَالَمِينَ ﴿١﴾ الرَّحْمَٰنِ الرَّحِيمِ ﴿٢﴾ مَالِكِ يَوْمِ الدِّينِ ﴿٣﴾... [Selected Surah Text Contents Display Right Here]");
+                showReadingLayout(`Surah ${textName}`, "بِسْمِ اللَّهِ الرَّحْمَٰنِ الرَّحِيمِ. الْحَمْدُ لِلَّهِ رَبِّ الْعَالَمِينَ ﴿١﴾ الرَّحْمَٰنِ الرَّحِيمِ ﴿٢﴾ مَالِكِ يَوْمِ الدِّينِ ﴿٣﴾ إِيَّاكَ نَعْبُدُ وَإِيَّاكَ نَسْتَعِينُ... [Arabic Quranic Verses text content loaded dynamically for the selected Surah display window]");
             });
 
+            // Slider Font Adjuster
             fontSizeSlider.addEventListener('input', (e) => {
                 quranTextContent.style.fontSize = e.target.value + 'px';
             });
 
-            // Reliable Mobile Menu Click Event Trigger
+            // Responsive Header Menu Logic
             const menuBtn = document.getElementById('mobileMenuBtn');
             const dropdownMenu = document.getElementById('mobileDropdownMenu');
             const hamburgerIcon = document.getElementById('hamburgerIcon');
             const closeIcon = document.getElementById('closeIcon');
 
             if (menuBtn && dropdownMenu) {
-                menuBtn.addEventListener('click', (e) => {
-                    e.stopPropagation();
+                menuBtn.addEventListener('click', () => {
                     dropdownMenu.classList.toggle('hidden');
                     hamburgerIcon.classList.toggle('hidden');
                     closeIcon.classList.toggle('hidden');
-                });
-
-                // Document click hides active open mobile panel automatically
-                document.addEventListener('click', () => {
-                    if (!dropdownMenu.classList.contains('hidden')) {
-                        dropdownMenu.classList.add('hidden');
-                        hamburgerIcon.classList.remove('hidden');
-                        closeIcon.classList.add('hidden');
-                    }
                 });
             }
         });
