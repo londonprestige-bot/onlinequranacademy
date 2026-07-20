@@ -91,10 +91,10 @@
 
                 <!-- Phone & Language Dropdown -->
                 <div class="flex items-center space-x-4">
-                    <a href="tel:+923074277240"
+                    <a href="tel:+923075329240"
                         class="hidden lg:flex items-center space-x-2 text-xs font-bold border border-gold-500/30 px-3 py-1.5 rounded-full bg-gold-500/5 hover:bg-gold-500/20 transition-all text-gold-400">
                         <i class="fa-solid fa-phone"></i>
-                        <span>+92 307 4277240</span>
+                        <span>+923075329240</span>
                     </a>
 
                     <!-- Hidden Google Translate Element Container -->
@@ -252,7 +252,58 @@
             </div>
         </div>
     </section>
+    <!-- ================= GLOBAL LANGUAGE TRANSLATOR ================= -->
+    <div class="bg-neutral-900/40 border-t border-neutral-800 py-4 text-center w-full">
+        <div class="max-w-7xl mx-auto px-4 flex flex-col sm:flex-row items-center justify-center gap-3">
+            <span class="text-xs text-gray-400 font-medium tracking-wide">
+                <i class="fa-solid fa-language text-gold-400 mr-1 text-sm"></i> Select Your Language:
+            </span>
+            <!-- Google Translate Dropdown Container -->
+            <div id="google_element"
+                class="inline-block overflow-hidden rounded-md border border-gold-500/20 bg-neutral-950 text-xs text-white">
+            </div>
+        </div>
+    </div>
 
+    <!-- Google Translate Scripts (Put this right before the </body> tag if possible) -->
+    <script type="text/javascript">
+        function googleTranslateElementInit() {
+            new google.translate.TranslateElement({
+                pageLanguage: 'en',
+                layout: google.translate.TranslateElement.InlineLayout.SIMPLE
+            }, 'google_element');
+        }
+    </script>
+    <script type="text/javascript"
+        src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
+
+    <style>
+        /* Google Translate Styles Clean Up for Dark Theme */
+        .goog-te-gadget {
+            font-family: inherit !important;
+            font-size: 12px !important;
+            color: #a3a3a3 !important;
+        }
+
+        .goog-te-gadget-simple {
+            background-color: #0a0a0a !important;
+            border: 1px solid rgba(212, 163, 89, 0.2) !important;
+            padding: 4px 8px !important;
+            border-radius: 6px !important;
+        }
+
+        .goog-te-gadget-simple .goog-te-menu-value span {
+            color: #d4d4d4 !important;
+        }
+
+        .goog-te-banner-frame.skiptranslate {
+            display: none !important;
+        }
+
+        body {
+            top: 0px !important;
+        }
+    </style>
     <!-- ================= FOOTER ================= -->
     <footer class="bg-neutral-950 py-12 border-t border-gold-500/20">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -300,7 +351,7 @@
                         Lahore, Punjab, Pakistan (Active internationally across UK, US, Arab states and beyond)
                     </p>
                     <p class="text-xs text-gold-500 font-bold">
-                        ?? <a href="tel:+923074277240" class="hover:underline">+92 307 4277240</a>
+                        ?? <a href="tel:+923075329240" class="hover:underline">+923075329240</a>
                     </p>
                 </div>
             </div>
@@ -321,11 +372,11 @@
 
     <!-- ================= FLOATING ACTION BUTTONS ================= -->
     <div class="fixed bottom-6 left-6 z-50 flex flex-col space-y-3">
-        <a href="tel:+923074277240"
+        <a href="tel:+923075329240"
             class="w-12 h-12 bg-gold-500 text-black hover:bg-gold-600 rounded-full flex items-center justify-center shadow-lg shadow-gold-500/30 transition-transform hover:scale-110">
             <i class="fa-solid fa-phone text-lg"></i>
         </a>
-        <a href="https://wa.me/923074277240?text=Assalam-o-Alaikum,%20I%20want%20to%20apply%20for%20online%20Quran%20classes."
+        <a href="https://wa.me/+923075329240?text=Assalam-o-Alaikum,%20I%20want%20to%20apply%20for%20online%20Quran%20classes."
             target="_blank" rel="noopener"
             class="w-12 h-12 bg-[#25D366] text-white hover:bg-[#20ba59] rounded-full flex items-center justify-center shadow-lg shadow-emerald-500/30 transition-transform hover:scale-110">
             <i class="fa-brands fa-whatsapp text-2xl"></i>
@@ -446,11 +497,11 @@
                         "4. Islamic Supplications (Daily Duas, Prayers/Salah rules, and Sunnah)\n\n" +
                         "We offer 3 days of free trial classes. Please let me know which one you'd like to join!";
                 } else if (query.includes('fee') || query.includes('price') || query.includes('charges') || query.includes('cost')) {
-                    response = "Our fee packages are very budget-friendly and custom-designed based on the number of classes you take per week. Please contact us on WhatsApp (+92 307 4277240) to receive the exact fee plans according to your timezone.";
+                    response = "Our fee packages are very budget-friendly and custom-designed based on the number of classes you take per week. Please contact us on WhatsApp (+923075329240) to receive the exact fee plans according to your timezone.";
                 } else if (query.includes('timing') || query.includes('schedule') || query.includes('time') || query.includes('when')) {
                     response = "We operate 24/7! Classes can be customized according to any timezone or timeframe that is convenient for you or your kids.";
                 } else if (query.includes('trial') || query.includes('free') || query.includes('apply')) {
-                    response = "You can register for a 3-day free trial right now by filling out the 'Apply' form on top of our homepage, or message us directly on WhatsApp (+92 307 4277240) for fast scheduling.";
+                    response = "You can register for a 3-day free trial right now by filling out the 'Apply' form on top of our homepage, or message us directly on WhatsApp (+923075329240) for fast scheduling.";
                 }
 
                 botBubble.innerHTML = response.replace(/\n/g, '<br>');
