@@ -371,46 +371,90 @@
         </a>
     </div>
 
-    <!-- ================= AI CHAT ASSISTANT WIDGET ================= -->
+    <!-- Floating Navigation Button -->
     <div class="fixed bottom-6 right-6 z-50">
-        <button onclick="toggleChat()"
-            class="w-14 h-14 bg-gradient-to-tr from-gold-600 to-gold-400 text-black rounded-full shadow-lg shadow-gold-500/30 flex items-center justify-center transition-transform hover:scale-110 focus:outline-none">
-            <i class="fa-solid fa-robot text-xl"></i>
-            <span class="absolute -top-1 -right-1 w-3 h-3 bg-red-500 rounded-full border border-neutral-950"></span>
+        <!-- Floating Button -->
+        <button id="floatingNavBtn" onclick="toggleNavPopup()"
+            class="bg-gold-500 hover:bg-gold-600 text-slate-950 p-4 rounded-full shadow-2xl flex items-center justify-center transition-all duration-300 transform hover:scale-110 focus:outline-none border-2 border-slate-900"
+            title="Quick Menu">
+            <i id="navIcon" class="fa-solid fa-bars text-xl"></i>
         </button>
-        <div id="aiChatBox"
-            class="hidden absolute bottom-20 right-0 w-80 sm:w-96 bg-neutral-900 border border-gold-500/20 rounded-2xl shadow-2xl overflow-hidden flex flex-col">
-            <div class="bg-gold-500 p-4 text-black font-bold flex items-center justify-between">
-                <div class="flex items-center space-x-2">
-                    <i class="fa-solid fa-robot"></i>
-                    <div>
-                        <h4 class="text-sm font-bold leading-tight">Islamic AI Academy Assistant</h4>
-                        <span class="text-[10px] opacity-75">Always Online</span>
-                    </div>
-                </div>
-                <button onclick="toggleChat()" class="text-black hover:text-neutral-800 text-lg">
-                    <i class="fa-solid fa-xmark"></i>
-                </button>
+
+        <!-- Popup Menu -->
+        <div id="navPopup"
+            class="hidden absolute bottom-16 right-0 w-60 bg-slate-900 border border-slate-800 rounded-2xl shadow-2xl p-4 text-slate-100 backdrop-blur-md bg-opacity-95 transition-all duration-300">
+            <div class="flex items-center justify-between border-b border-slate-800 pb-3 mb-3">
+                <h3 class="font-bold text-gold-400 text-sm tracking-wide uppercase">Quick Menu</h3>
+                <span class="text-xs text-slate-400">Pages</span>
             </div>
-            <div id="chatMessages" class="p-4 h-64 overflow-y-auto space-y-3 text-xs flex flex-col">
-                <div
-                    class="bg-gold-500/10 border border-gold-500/20 self-start p-2.5 rounded-lg max-w-[80%] text-gray-300">
-                    Salam! I am your Quran Academy Assistant. How can I help you today with admission, courses, or
-                    scheduling?
-                </div>
-            </div>
-            <div class="p-3 border-t border-neutral-800 bg-neutral-950 flex items-center space-x-2">
-                <input type="text" id="chatInput" placeholder="Ask a question..."
-                    onkeydown="if(event.key==='Enter') sendMessage()"
-                    class="flex-grow bg-neutral-900 text-xs text-white border border-neutral-700 rounded-lg p-2 outline-none focus:border-gold-500">
-                <button onclick="sendMessage()"
-                    class="bg-gold-500 text-black px-3 py-2 rounded-lg hover:bg-gold-600 transition-colors">
-                    <i class="fa-solid fa-paper-plane text-xs"></i>
-                </button>
-            </div>
+
+            <!-- Exact Pages Links -->
+            <ul class="space-y-1 text-sm">
+                <li>
+                    <a href="index.html"
+                        class="flex items-center p-2 rounded-xl hover:bg-slate-800 hover:text-gold-400 transition-colors">
+                        <i class="fa-solid fa-house w-6 text-gold-400"></i> Home
+                    </a>
+                </li>
+                <li>
+                    <a href="about.html"
+                        class="flex items-center p-2 rounded-xl hover:bg-slate-800 hover:text-gold-400 transition-colors">
+                        <i class="fa-solid fa-circle-info w-6 text-gold-400"></i> About Us
+                    </a>
+                </li>
+                <li>
+                    <a href="services.html"
+                        class="flex items-center p-2 rounded-xl hover:bg-slate-800 hover:text-gold-400 transition-colors">
+                        <i class="fa-solid fa-layer-group w-6 text-gold-400"></i> Services
+                    </a>
+                </li>
+                <li>
+                    <a href="packages.html"
+                        class="flex items-center p-2 rounded-xl hover:bg-slate-800 hover:text-gold-400 transition-colors">
+                        <i class="fa-solid fa-tags w-6 text-gold-400"></i> Packages
+                    </a>
+                </li>
+                <li>
+                    <a href="read-quran.html"
+                        class="flex items-center p-2 rounded-xl hover:bg-slate-800 hover:text-gold-400 transition-colors">
+                        <i class="fa-solid fa-book-quran w-6 text-gold-400"></i> Read Quran
+                    </a>
+                </li>
+                <li>
+                    <a href="contact.html"
+                        class="flex items-center p-2 rounded-xl hover:bg-slate-800 hover:text-gold-400 transition-colors">
+                        <i class="fa-solid fa-envelope w-6 text-gold-400"></i> Contact
+                    </a>
+                </li>
+            </ul>
         </div>
     </div>
 
+    <!-- Toggle Logic Script -->
+    <script>
+        function toggleNavPopup() {
+            const popup = document.getElementById('navPopup');
+            const icon = document.getElementById('navIcon');
+
+            popup.classList.toggle('hidden');
+
+            if (popup.classList.contains('hidden')) {
+                icon.className = 'fa-solid fa-bars text-xl';
+            } else {
+                icon.className = 'fa-solid fa-xmark text-xl';
+            }
+        }
+
+        document.addEventListener('click', function (event) {
+            const popup = document.getElementById('navPopup');
+            const btn = document.getElementById('floatingNavBtn');
+
+            if (popup && btn && !popup.contains(event.target) && !btn.contains(event.target)) {
+                popup.classList.add('hidden');
+                document.getElementById('navIcon').className = 'fa-solid fa-bars text-xl';
+            }
+        });
+    </script>
     <!-- ================= MULTI-FUNCTIONAL CORE SCRIPTS ================= -->
     <script type="text/javascript">
         // 1. Google Translate Initializer
