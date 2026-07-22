@@ -214,45 +214,7 @@
         </div>
     </section>
 
-    <!-- Dynamic Translation Gateway -->
-    <div class="bg-neutral-900/40 border-t border-neutral-800 py-6 text-center w-full">
-        <div class="max-w-7xl mx-auto px-4 flex flex-col items-center justify-center gap-3">
-            <span class="text-xs text-gray-400 font-medium tracking-wide">
-                <i class="fa-solid fa-language text-gold-400 mr-1 text-sm"></i> Translate Website:
-            </span>
-            <!-- Language Buttons Layout -->
-            <div class="flex flex-wrap justify-center gap-3 text-xs mt-1">
-                <button onclick="translateSite('zh-CN')"
-                    class="text-gray-300 hover:text-gold-400 transition-colors px-3 py-1.5 bg-neutral-950 border border-neutral-800 rounded-md hover:border-gold-500/30">Chinese
-                    (中文)</button>
-                <button onclick="translateSite('fr')"
-                    class="text-gray-300 hover:text-gold-400 transition-colors px-3 py-1.5 bg-neutral-950 border border-neutral-800 rounded-md hover:border-gold-500/30">French
-                    (Français)</button>
-                <button onclick="translateSite('ja')"
-                    class="text-gray-300 hover:text-gold-400 transition-colors px-3 py-1.5 bg-neutral-950 border border-neutral-800 rounded-md hover:border-gold-500/30">Japanese
-                    (日本語)</button>
-                <button onclick="translateSite('ko')"
-                    class="text-gray-300 hover:text-gold-400 transition-colors px-3 py-1.5 bg-neutral-950 border border-neutral-800 rounded-md hover:border-gold-500/30">Korean
-                    (한국어)</button>
-                <button onclick="translateSite('tr')"
-                    class="text-gray-300 hover:text-gold-400 transition-colors px-3 py-1.5 bg-neutral-950 border border-neutral-800 rounded-md hover:border-gold-500/30">Turkish
-                    (Türkçe)</button>
-                <button onclick="translateSite('es')"
-                    class="text-gray-300 hover:text-gold-400 transition-colors px-3 py-1.5 bg-neutral-950 border border-neutral-800 rounded-md hover:border-gold-500/30">Spanish
-                    (Español)</button>
-            </div>
-        </div>
-    </div>
 
-    <!-- Dynamic Router Script -->
-    <script>
-        function translateSite(targetLang) {
-            // Yeh script automatic aapki active url (chahe vercel ho ya .com) pick kar lega
-            var currentUrl = window.location.href;
-            var googleTranslateUrl = "https://translate.google.com/translate?sl=en&tl=" + targetLang + "&u=" + encodeURIComponent(currentUrl);
-            window.open(googleTranslateUrl, '_blank');
-        }
-    </script>
     <!-- ================= FOOTER ================= -->
     <footer class="bg-neutral-950 py-12 border-t border-gold-500/20">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
